@@ -18,8 +18,22 @@ static void fileCallback(ConstFSEventStreamRef streamRef,
                          const FSEventStreamEventFlags eventFlags[],
                          const FSEventStreamEventId eventIds[]) {
     FileWatcher *self = (__bridge FileWatcher *)clientCallBackInfo;
-    [self performSelectorOnMainThread:@selector(filesChanged:)
-                           withObject:(__bridge id)eventPaths waitUntilDone:NO];
+    // Check that the event flags include an item renamed flag, this helps avoid
+    // unnecessary injection, such as triggering injection when switching between
+    // files in Xcode.
+    BOOL shouldRespondToFileChange = NO;
+    for (int i = 0; i < numEvents; i++) {
+        uint32 flag = eventFlags[i];
+        if (flag & kFSEventStreamEventFlagItemRenamed) {
+            shouldRespondToFileChange = YES;
+            break;
+        }
+    }
+
+    if (shouldRespondToFileChange == YES) {
+        [self performSelectorOnMainThread:@selector(filesChanged:)
+                               withObject:(__bridge id)eventPaths waitUntilDone:NO];
+    }
 }
 
 - (instancetype)initWithRoot:(NSString *)projectRoot plugin:(InjectionCallback)callback;
@@ -46,13 +60,16 @@ static void fileCallback(ConstFSEventStreamRef streamRef,
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSMutableSet *changed = [NSMutableSet new];
 
-    for (NSString *path in changes)
+    for (NSString *path in changes) {
         if ([path rangeOfString:INJECTABLE_PATTERN
                         options:NSRegularExpressionSearch].location != NSNotFound &&
             [path rangeOfString:@"DerivedData/|InjectionProject/|main.mm?$"
                         options:NSRegularExpressionSearch].location == NSNotFound &&
-            [fileManager fileExistsAtPath:path])
+            [fileManager fileExistsAtPath:path]) {
+
             [changed addObject:path];
+        }
+    }
 
     //NSLog( @"filesChanged: %@", changed );
     if (changed.count)

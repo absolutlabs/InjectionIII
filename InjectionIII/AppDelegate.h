@@ -13,8 +13,11 @@
 
 @property (weak) IBOutlet NSMenuItem *enableWatcher;
 @property (weak) InjectionServer *lastConnection;
+@property NSString *selectedProject;
 
+- (NSString *)vaccineConfiguration;
 - (void)setMenuIcon:(NSString *)tiffName;
+- (IBAction)openProject:sender;
 
 @end
 

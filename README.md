@@ -11,11 +11,7 @@ You can avoid the complications of code signing by using the pre-built binary wh
 to take the app out of qurantine manually or it will report it as damaged when you run it: `xattr -d
 com.apple.quarantine ~/Downloads/InjectionIII.app`. To use, copy/link it to /Applications
 and run the app. Injection also expects to find your current Xcode at path /Appplications/Xcode.app.
-Injection no longer requires you to change your project as for iOS is always available if you use the
-"Start Injection" menu (or type control-=) each time you start your app.
-
-If you get tired of this or you want to develop 32 bit apps or tvOS or macOS you can and add one
-of the following to your applicationDidFinishLaunching:
+Finally, you'll need to add one of the following to your application's applicationDidFinishLaunching:
 
 ```Swift
 #if DEBUG
@@ -26,10 +22,22 @@ Bundle(path: "/Applications/InjectionIII.app/Contents/Resources/tvOSInjection.bu
 Bundle(path: "/Applications/InjectionIII.app/Contents/Resources/macOSInjection.bundle")?.load()
 #endif
 ```
+Or, for Xcode 10:
+
+```Swift
+#if DEBUG
+Bundle(path: "/Applications/InjectionIII.app/Contents/Resources/iOSInjection10.bundle")?.load()
+//for tvOS:
+Bundle(path: "/Applications/InjectionIII.app/Contents/Resources/tvOSInjection10.bundle")?.load()
+//Or for macOS:
+Bundle(path: "/Applications/InjectionIII.app/Contents/Resources/macOSInjection10.bundle")?.load()
+#endif
+```
 
 Once injection is connected, a file watcher is started in the InjectionIII app and whenever
 you save a Swift or Objective-C source the target app is messaged to update the implementation.
 The file watcher can be disabled & enabled while the app is running using the status bar menu.
+While the file watcher is disabled you can force injection's through manually using a hotkey ctrl-=.
 If you inject a subclass of XCTest it will try running that individual test inside your application.
 When you run your application without rebuilding (^⌘R), recent injections will be re-applied.
 
@@ -47,11 +55,9 @@ from source you'll need to use:
     
 ### Available downloads
 
-| Xcode 9 | Xcode 10 |
-| ------------- | ------------- |
-| [Mac app store](https://itunes.apple.com/app/injectioniii/id1380446739?mt=12) | [Direct download](http://johnholdsworth.com/InjectionX.app.zip) |
-
-The reason for multiple versions is routed in Swift not being AB stable yet, this means that there will be one version per Xcode release, hence numerous versions being available for download.
+| Xcode 9.3/4, Xcode 10 |
+| ------------- |
+| [Mac app store](https://itunes.apple.com/app/injectioniii/id1380446739?mt=12) |
 
 ### Limitations
 

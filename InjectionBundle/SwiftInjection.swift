@@ -5,7 +5,7 @@
 //  Created by John Holdsworth on 05/11/2017.
 //  Copyright © 2017 John Holdsworth. All rights reserved.
 //
-//  $Id: //depot/ResidentEval/InjectionBundle/SwiftInjection.swift#40 $
+//  $Id: //depot/ResidentEval/InjectionBundle/SwiftInjection.swift#48 $
 //
 //  Cut-down version of code injection in Swift. Uses code
 //  from SwiftEval.swift to recompile and reload class.
@@ -14,6 +14,8 @@
 #if arch(x86_64) || arch(i386) // simulator/macOS only
 import Foundation
 import XCTest
+
+private let debugSweep = getenv("DEBUG_SWEEP") != nil
 
 @objc public protocol SwiftInjected {
     @objc optional func injected()
@@ -112,10 +114,11 @@ public class SwiftInjection: NSObject {
             let existingClass = unsafeBitCast(oldClass, to: UnsafeMutablePointer<ClassMetadataSwift>.self)
             let classMetadata = unsafeBitCast(newClass, to: UnsafeMutablePointer<ClassMetadataSwift>.self)
 
-            // Swift equivalent of Swizzling
+            // Is this a Swift class?
             if (classMetadata.pointee.Data & 0x1) == 1 {
+                // Swift equivalent of Swizzling
                 if classMetadata.pointee.ClassSize != existingClass.pointee.ClassSize {
-                    NSLog("\(oldClass) metadata size changed. Did you add a method?")
+                    print("💉 ⚠️ Adding or removing methods on Swift classes is not supported. Your application will likely crash. ⚠️")
                 }
 
                 func byteAddr<T>(_ location: UnsafeMutablePointer<T>) -> UnsafeMutablePointer<UInt8> {
@@ -126,7 +129,7 @@ public class SwiftInjection: NSObject {
                 let vtableLength = Int(existingClass.pointee.ClassSize -
                     existingClass.pointee.ClassAddressPoint) - vtableOffset
 
-                print("Injected '\(NSStringFromClass(oldClass))', vtable length: \(vtableLength)")
+                print("💉 Injected '\(NSStringFromClass(oldClass))'")
                 memcpy(byteAddr(existingClass) + vtableOffset,
                        byteAddr(classMetadata) + vtableOffset, vtableLength)
             }
@@ -155,10 +158,17 @@ public class SwiftInjection: NSObject {
                 })
                 RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
             }
-        }
-        else {
-            let injectedClasses = oldClasses.filter {
-                class_getInstanceMethod($0, #selector(SwiftInjected.injected)) != nil }
+        } else {
+            var injectedClasses = [AnyClass]()
+            for cls in oldClasses {
+                if class_getInstanceMethod(cls, #selector(SwiftInjected.injected)) != nil {
+                    injectedClasses.append(cls)
+                    let kvoName = "NSKVONotifying_" + NSStringFromClass(cls)
+                    if let kvoCls = NSClassFromString(kvoName) {
+                        injectedClasses.append(kvoCls)
+                    }
+                }
+            }
 
             // implement -injected() method using sweep of objects in application
             if !injectedClasses.isEmpty {
@@ -172,7 +182,19 @@ public class SwiftInjection: NSObject {
                     (instance: AnyObject) in
                     if injectedClasses.contains(where: { $0 == object_getClass(instance) }) {
                         let proto = unsafeBitCast(instance, to: SwiftInjected.self)
+                        if SwiftEval.sharedInstance().vaccineEnabled {
+                            performVaccineInjection(instance)
+                            proto.injected?()
+                            return
+                        }
+
                         proto.injected?()
+
+                        #if os(iOS) || os(tvOS)
+                        if let vc = instance as? UIViewController {
+                            flash(vc: vc)
+                        }
+                        #endif
                     }
                 }).sweepValue(seeds)
             }
@@ -181,6 +203,30 @@ public class SwiftInjection: NSObject {
             NotificationCenter.default.post(name: notification, object: oldClasses)
         }
     }
+
+    @objc(vaccine:)
+    public class func performVaccineInjection(_ object: AnyObject) {
+        let vaccine = Vaccine()
+        vaccine.performInjection(on: object)
+    }
+
+    #if os(iOS) || os(tvOS)
+    @objc(flash:)
+    public class func flash(vc: UIViewController) {
+        DispatchQueue.main.async {
+            let v = UIView(frame: vc.view.frame)
+            v.backgroundColor = .white
+            v.alpha = 0.3
+            vc.view.addSubview(v)
+            UIView.animate(withDuration: 0.2,
+                           delay: 0.0,
+                           options: UIViewAnimationOptions.curveEaseIn,
+                           animations: {
+                            v.alpha = 0.0
+            }, completion: { _ in v.removeFromSuperview() })
+        }
+    }
+    #endif
 
     static func injection(swizzle newClass: AnyClass?, onto oldClass: AnyClass?) {
         var methodCount: UInt32 = 0
@@ -214,9 +260,7 @@ class SwiftSweeper {
                 style = .optional
             }
             switch style {
-            case .set:
-                fallthrough
-            case .collection:
+            case .set, .collection:
                 for (_, child) in mirror.children {
                     sweepValue(child)
                 }
@@ -231,18 +275,11 @@ class SwiftSweeper {
             case .class:
                 sweepInstance(value as AnyObject)
                 return
-            case .optional:
-                if let some = mirror.children.first?.value {
-                    sweepValue(some)
-                }
-                return
-            case .enum:
+            case .optional, .enum:
                 if let evals = mirror.children.first?.value {
                     sweepValue(evals)
                 }
-            case .tuple:
-                fallthrough
-            case .struct:
+            case .tuple, .struct:
                 sweepMembers(value)
             }
         }
@@ -252,6 +289,9 @@ class SwiftSweeper {
         let reference = unsafeBitCast(instance, to: UnsafeRawPointer.self)
         if seen[reference] == nil {
             seen[reference] = true
+            if debugSweep {
+                print("Sweeping instance \(reference) of class \(type(of: instance))")
+            }
 
             instanceTask(instance)
 

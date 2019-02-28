@@ -10,14 +10,15 @@
 #import "SignerService.h"
 #import "InjectionServer.h"
 
-#import "HelperInstaller.h"
-#import "HelperProxy.h"
+//#import "HelperInstaller.h"
+//#import "HelperProxy.h"
 
 #import <Carbon/Carbon.h>
 #import <AppKit/NSEvent.h>
 #import "DDHotKeyCenter.h"
 
 #import "InjectionIII-Swift.h"
+#import "UserDefaults.h"
 
 #ifdef XPROBE_PORT
 #import "../XprobePlugin/Classes/XprobePluginMenuController.h"
@@ -32,7 +33,7 @@ AppDelegate *appDelegate;
 
 @implementation AppDelegate {
     IBOutlet NSMenu *statusMenu;
-    IBOutlet NSMenuItem *startItem, *xprobeItem, *windowItem;
+    IBOutlet NSMenuItem *startItem, *xprobeItem, *enabledTDDItem, *enableVaccineItem, *windowItem;
     IBOutlet NSStatusItem *statusItem;
 }
 
@@ -49,11 +50,79 @@ AppDelegate *appDelegate;
     statusItem.enabled = TRUE;
     statusItem.title = @"";
 
-    [self setMenuIcon:@"InjectionIdle"];
+    enabledTDDItem.state = ([[NSUserDefaults standardUserDefaults] boolForKey:UserDefaultsTDDEnabled] == YES)
+        ? NSControlStateValueOn
+        : NSControlStateValueOff;
+    enableVaccineItem.state = ([[NSUserDefaults standardUserDefaults] boolForKey:UserDefaultsVaccineEnabled] == YES)
+        ? NSControlStateValueOn
+        : NSControlStateValueOff;
 
+    [self setMenuIcon:@"InjectionIdle"];
     [[DDHotKeyCenter sharedHotKeyCenter] registerHotKeyWithKeyCode:kVK_ANSI_Equal
                                                      modifierFlags:NSEventModifierFlagControl
                                                             target:self action:@selector(autoInject:) object:nil];
+}
+
+- (IBAction)openProject:sender {
+    [self application:NSApp openFile:nil];
+}
+
+- (IBAction)toggleTDD:(NSMenuItem *)sender {
+    [self toggleState:sender];
+    BOOL newSetting = sender.state == NSControlStateValueOn;
+    [[NSUserDefaults standardUserDefaults] setBool:newSetting forKey:UserDefaultsTDDEnabled];
+}
+
+- (IBAction)toggleVaccine:(NSMenuItem *)sender {
+    [self toggleState:sender];
+    BOOL newSetting = sender.state == NSControlStateValueOn;
+    [[NSUserDefaults standardUserDefaults] setBool:newSetting forKey:UserDefaultsVaccineEnabled];
+    [self.lastConnection writeCommand:InjectionVaccineSettingChanged withString:[appDelegate vaccineConfiguration]];
+}
+
+- (NSString *)vaccineConfiguration {
+    BOOL vaccineSetting = [[NSUserDefaults standardUserDefaults] boolForKey:UserDefaultsVaccineEnabled];
+    NSNumber *value = [NSNumber numberWithBool:vaccineSetting];
+    NSString *key = [NSString stringWithString:UserDefaultsVaccineEnabled];
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObjects:@[value] forKeys:@[key]];
+    NSError *err;
+    NSData *jsonData = [NSJSONSerialization  dataWithJSONObject:dictionary
+                                                        options:0
+                                                          error:&err];
+    NSString *configuration = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    return configuration;
+}
+
+- (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename {
+    NSOpenPanel *open = [NSOpenPanel new];
+    open.prompt = NSLocalizedString(@"Select Project Directory", @"Project Directory");
+    //    open.allowsMultipleSelection = TRUE;
+    if (filename)
+        open.directory = filename;
+    open.canChooseDirectories = TRUE;
+    open.canChooseFiles = FALSE;
+    //    open.showsHiddenFiles = TRUE;
+    if ([open runModal] == NSFileHandlingPanelOKButton) {
+        NSArray<NSString *> *fileList = [[NSFileManager defaultManager]
+                                         contentsOfDirectoryAtPath:open.URL.path error:NULL];
+        if(NSString *projectFile =
+           [self fileWithExtension:@"xcworkspace" inFiles:fileList] ?:
+           [self fileWithExtension:@"xcodeproj" inFiles:fileList]) {
+            self.selectedProject = [open.URL.path stringByAppendingPathComponent:projectFile];
+            [self.lastConnection setProject:self.selectedProject];
+            [[NSDocumentController sharedDocumentController]
+             noteNewRecentDocumentURL:open.URL];
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
+- (NSString * _Nullable)fileWithExtension:(NSString * _Nonnull)extension inFiles:(NSArray * _Nonnull)files {
+    for (NSString *file in files)
+        if ([file.pathExtension isEqualToString:extension])
+            return file;
+    return nil;
 }
 
 - (void)setMenuIcon:(NSString *)tiffName {
@@ -74,8 +143,9 @@ AppDelegate *appDelegate;
 }
 
 - (IBAction)autoInject:(NSMenuItem *)sender {
+    [self.lastConnection injectPending];
+#if 0
     NSError *error = nil;
-
     // Install helper tool
     if ([HelperInstaller isInstalled] == NO) {
 #pragma clang diagnostic push
@@ -102,6 +172,7 @@ AppDelegate *appDelegate;
         NSLog(@"Couldn't inject Simulator (domain: %@ code: %d)", error.domain, (int)error.code);
         [[NSAlert alertWithError:error] runModal];
     }
+#endif
 }
 
 - (IBAction)runXprobe:(NSMenuItem *)sender {
@@ -113,12 +184,12 @@ AppDelegate *appDelegate;
         #pragma clang diagnostic pop
         xprobePlugin.injectionPlugin = self;
     }
-    [self.lastConnection writeString:@"XPROBE"];
+    [self.lastConnection writeCommand:InjectionXprobe withString:@""];
     windowItem.hidden = FALSE;
 }
 
 - (void)evalCode:(NSString *)swift {
-    [self.lastConnection writeString:[@"EVAL " stringByAppendingString:swift]];
+    [self.lastConnection writeCommand:InjectionEval withString:swift];
 }
 
 - (IBAction)donate:sender {

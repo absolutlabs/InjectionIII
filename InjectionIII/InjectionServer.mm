@@ -14,6 +14,7 @@
 
 #import "Xcode.h"
 #import "XcodeHash.h"
+#import "UserDefaults.h"
 
 #import "InjectionIII-Swift.h"
 
@@ -23,7 +24,11 @@ static dispatch_queue_t injectionQueue = dispatch_queue_create("InjectionQueue",
 static NSMutableDictionary *projectInjected = [NSMutableDictionary new];
 #define MIN_INJECTION_INTERVAL 1.
 
-@implementation InjectionServer
+@implementation InjectionServer {
+    void (^injector)(NSArray *changed);
+    FileWatcher *fileWatcher;
+    NSMutableArray *pending;
+}
 
 + (int)error:(NSString *)message {
     int saveno = errno;
@@ -39,14 +44,33 @@ static NSMutableDictionary *projectInjected = [NSMutableDictionary new];
 }
 
 - (void)runInBackground {
-    XcodeApplication *xcode = (XcodeApplication *)[SBApplication
-                       applicationWithBundleIdentifier:XcodeBundleID];
-    XcodeWorkspaceDocument *workspace = [xcode activeWorkspaceDocument];
-    NSString *projectFile = workspace.file.path, *projectRoot = projectFile.stringByDeletingLastPathComponent;
+    [self writeString:NSHomeDirectory()];
+
+    NSString *projectFile = appDelegate.selectedProject;
+    static BOOL MAS = false;
+
+    if (!projectFile) {
+        XcodeApplication *xcode = (XcodeApplication *)[SBApplication
+                           applicationWithBundleIdentifier:XcodeBundleID];
+        XcodeWorkspaceDocument *workspace = [xcode activeWorkspaceDocument];
+        projectFile = workspace.file.path;
+    }
+
+    if (!projectFile) {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [appDelegate openProject:self];
+        });
+        projectFile = appDelegate.selectedProject;
+        MAS = true;
+    }
+    if (!projectFile)
+        return;
+
     NSLog(@"Connection with project file: %@", projectFile);
 
     // tell client app the inferred project being watched
-    [self writeString:projectFile];
+    if (![[self readString] isEqualToString:INJECTION_KEY])
+        return;
 
     SwiftEval *builder = [SwiftEval new];
 
@@ -81,27 +105,32 @@ static NSMutableDictionary *projectInjected = [NSMutableDictionary new];
 
     // callback on errors
     builder.evalError = ^NSError *(NSString *message) {
-        [self writeString:[@"LOG " stringByAppendingString:message]];
+        [self writeCommand:InjectionLog withString:message];
         return [[NSError alloc] initWithDomain:@"SwiftEval" code:-1
                                       userInfo:@{NSLocalizedDescriptionKey: message}];
     };
 
     [appDelegate setMenuIcon:@"InjectionOK"];
     appDelegate.lastConnection = self;
+    pending = [NSMutableArray new];
 
     auto inject = ^(NSString *swiftSource) {
         NSControlStateValue watcherState = appDelegate.enableWatcher.state;
         dispatch_async(injectionQueue, ^{
             if (watcherState == NSControlStateValueOn) {
                 [appDelegate setMenuIcon:@"InjectionBusy"];
-                if (NSString *tmpfile = [builder rebuildClassWithOldClass:nil
-                                                          classNameOrFile:swiftSource extra:nil error:nil])
-                    [self writeString:[@"INJECT " stringByAppendingString:tmpfile]];
-                else
-                    [appDelegate setMenuIcon:@"InjectionError"];
+//                if (!MAS) {
+//                    if (NSString *tmpfile = [builder rebuildClassWithOldClass:nil
+//                                                              classNameOrFile:swiftSource extra:nil error:nil])
+//                        [self writeString:[@"LOAD " stringByAppendingString:tmpfile]];
+//                    else
+//                        [appDelegate setMenuIcon:@"InjectionError"];
+//                }
+//                else
+                    [self writeCommand:InjectionInject withString:swiftSource];
             }
             else
-                [self writeString:@"LOG The file watcher is turned off"];
+                [self writeCommand:InjectionLog withString:@"The file watcher is turned off"];
         });
     };
 
@@ -116,7 +145,8 @@ static NSMutableDictionary *projectInjected = [NSMutableDictionary new];
         };
         time_t executableBuild = mtime(executable);
         for(NSString *source in lastInjected)
-            if (mtime(source) > executableBuild)
+            if (![source hasSuffix:@"storyboard"] && ![source hasSuffix:@"xib"] &&
+                mtime(source) > executableBuild)
                 inject(source);
     }
     else
@@ -125,37 +155,143 @@ static NSMutableDictionary *projectInjected = [NSMutableDictionary new];
     __block NSTimeInterval pause = 0.;
 
     // start up a file watcher to write generated tmpfile path to client app
-    FileWatcher *fileWatcher = [[FileWatcher alloc] initWithRoot:projectRoot plugin:^(NSArray *changed) {
-        NSTimeInterval now = [NSDate timeIntervalSinceReferenceDate];
-        for (NSString *swiftSource in changed)
-            if (now > lastInjected[swiftSource].doubleValue + MIN_INJECTION_INTERVAL && now > pause) {
-                lastInjected[swiftSource] = [NSNumber numberWithDouble:now];
-                inject(swiftSource);
+
+    NSMutableDictionary<NSString *, NSArray *> *testCache = [NSMutableDictionary new];
+
+    injector = ^(NSArray *changed) {
+        NSMutableArray *changedFiles = [NSMutableArray arrayWithArray:changed];
+
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:UserDefaultsTDDEnabled]) {
+            for (NSString *injectedFile in changed) {
+                NSArray *matchedTests = testCache[injectedFile] ?:
+                    (testCache[injectedFile] = [InjectionServer searchForTestWithFile:injectedFile
+                                    projectRoot:projectFile.stringByDeletingLastPathComponent
+                                    fileManager:[NSFileManager defaultManager]]);
+                [changedFiles addObjectsFromArray:matchedTests];
             }
-    }];
+        }
+
+        NSTimeInterval now = [NSDate timeIntervalSinceReferenceDate];
+        BOOL automatic = appDelegate.enableWatcher.state == NSControlStateValueOn;
+        for (NSString *swiftSource in changedFiles)
+            if (![pending containsObject:swiftSource])
+                if (now > lastInjected[swiftSource].doubleValue + MIN_INJECTION_INTERVAL && now > pause) {
+                    lastInjected[swiftSource] = [NSNumber numberWithDouble:now];
+                    [pending addObject:swiftSource];
+                    if (!automatic)
+                        [self writeCommand:InjectionLog
+                                withString:[NSString stringWithFormat:
+                                            @"'%@' saved, type ctrl-= to inject",
+                                            swiftSource.lastPathComponent]];
+                }
+
+        if (automatic)
+            [self injectPending];
+    };
+
+    [self setProject:projectFile];
 
     // read status requests from client app
-    while (NSString *response = [self readString])
-        if ([response hasPrefix:@"COMPLETE"])
+    InjectionCommand command;
+    while ((command = (InjectionCommand)[self readInt]) != InjectionEOF) {
+        switch (command) {
+        case InjectionComplete:
             [appDelegate setMenuIcon:@"InjectionOK"];
-        else if ([response hasPrefix:@"PAUSE "])
+            break;
+        case InjectionPause:
             pause = [NSDate timeIntervalSinceReferenceDate] +
-                [response substringFromIndex:@"PAUSE ".length].doubleValue;
-        else if ([response hasPrefix:@"SIGN "])
-            [self writeString:[SignerService codesignDylib:[response
-                substringFromIndex:@"SIGN ".length]] ? @"SIGNED 1" : @"SIGNED 0"];
-        else if ([response hasPrefix:@"ERROR "])
+                [self readString].doubleValue;
+            break;
+        case InjectionSign: {
+            BOOL signedOK = [SignerService codesignDylib:[self readString]];
+            [self writeCommand:InjectionSigned withString: signedOK ? @"1": @"0"];
+            break;
+        }
+        case InjectionError:
             [appDelegate setMenuIcon:@"InjectionError"];
+            NSLog(@"Injection error: %@", [self readString]);
 //            dispatch_async(dispatch_get_main_queue(), ^{
 //                [[NSAlert alertWithMessageText:@"Injection Error"
 //                                 defaultButton:@"OK" alternateButton:nil otherButton:nil
 //                     informativeTextWithFormat:@"%@",
 //                  [dylib substringFromIndex:@"ERROR ".length]] runModal];
 //            });
+            break;
+        default:
+            NSLog(@"InjectionServer: Unexpected case %d", command);
+            break;
+        }
+    }
 
     // client app disconnected
+    injector = nil;
     fileWatcher = nil;
     [appDelegate setMenuIcon:@"InjectionIdle"];
+}
+
+- (void)injectPending {
+    for (NSString *swiftSource in pending)
+        dispatch_async(injectionQueue, ^{
+            [self writeCommand:InjectionInject withString:swiftSource];
+        });
+    [pending removeAllObjects];
+}
+
+- (void)setProject:(NSString *)project {
+    if (!injector) return;
+    [self writeCommand:InjectionProject withString:project];
+    [self writeCommand:InjectionVaccineSettingChanged withString:[appDelegate vaccineConfiguration]];
+    fileWatcher = [[FileWatcher alloc]
+                   initWithRoot:project.stringByDeletingLastPathComponent
+                   plugin:injector];
+}
+
++ (NSArray *)searchForTestWithFile:(NSString *)injectedFile projectRoot:(NSString *)projectRoot fileManager:(NSFileManager *)fileManager;
+{
+    NSMutableArray *matchedTests = [NSMutableArray array];
+    NSString *injectedFileName = [[injectedFile lastPathComponent] stringByDeletingPathExtension];
+    NSURL *projectUrl = [NSURL URLWithString:[self urlEncodeString:projectRoot]];
+    NSDirectoryEnumerator *enumerator = [fileManager enumeratorAtURL:projectUrl
+                                          includingPropertiesForKeys:@[NSURLNameKey, NSURLIsDirectoryKey]
+                                                             options:NSDirectoryEnumerationSkipsHiddenFiles
+                                                        errorHandler:^BOOL(NSURL *url, NSError *error)
+                                         {
+                                             if (error) {
+                                                 NSLog(@"[Error] %@ (%@)", error, url);
+                                                 return NO;
+                                             }
+
+                                             return YES;
+                                         }];
+
+
+    for (NSURL *fileURL in enumerator) {
+        NSString *filename;
+        NSNumber *isDirectory;
+
+        [fileURL getResourceValue:&filename forKey:NSURLNameKey error:nil];
+        [fileURL getResourceValue:&isDirectory forKey:NSURLIsDirectoryKey error:nil];
+
+        if ([filename hasPrefix:@"_"] && [isDirectory boolValue]) {
+            [enumerator skipDescendants];
+            continue;
+        }
+
+        if (![isDirectory boolValue] &&
+            ![[filename lastPathComponent] isEqualToString:[injectedFile lastPathComponent]] &&
+            [[filename lowercaseString] containsString:[injectedFileName lowercaseString]]) {
+            [matchedTests addObject:fileURL.path];
+        }
+    }
+
+    return matchedTests;
+}
+
++ (nullable NSString *)urlEncodeString:(NSString *)string {
+    NSString *unreserved = @"-._~/?";
+    NSMutableCharacterSet *allowed = [NSMutableCharacterSet alphanumericCharacterSet];
+    [allowed addCharactersInString:unreserved];
+    return [string stringByAddingPercentEncodingWithAllowedCharacters: allowed];
 }
 
 - (void)dealloc {
