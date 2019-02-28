@@ -1,0 +1,801 @@
+{
+  "file:\/\/\/Users\/vincent\/Downloads\/Xcode%20tests\/Console\/Console\/ViewController.m" : {
+    "ViewController" : {
+      "-pouet_hop" : {
+        "callers" : [
+          {
+            "name" : "+[ALKit_Loader load]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Basics\/ALKit_Loader.m",
+            "lines" : "{100, 1}"
+          },
+          {
+            "name" : "+[ALRLMObject save:]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Realm\/ALRLMObject.m",
+            "lines" : "{224, 1}"
+          },
+          {
+            "name" : "+[RealmDB export_to:with_password:]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Realm\/RealmDB.m",
+            "lines" : "{141, 1}"
+          },
+          {
+            "name" : "+[RealmDB migrate_if_needed_with_block:]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Realm\/RealmDB.m",
+            "lines" : "{246, 1}"
+          },
+          {
+            "name" : "+[RealmDB open_encrypted_database_with_password:]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Realm\/RealmDB.m",
+            "lines" : "{92, 1}"
+          },
+          {
+            "name" : "-[ALListHelper cellAtIndexPath:]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/TableView\/ALListHelper.m",
+            "lines" : "{263, 1}"
+          },
+          {
+            "name" : "-[ALListHelper search:]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/TableView\/ALListHelper.m",
+            "lines" : "{124, 1}"
+          },
+          {
+            "name" : "-[ALListHelper setModelsF:]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/TableView\/ALListHelper.m",
+            "lines" : "{195, 1}"
+          },
+          {
+            "name" : "-[ALListHelper viewForHeaderInSection:]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/TableView\/ALListHelper.m",
+            "lines" : "{329, 1}"
+          },
+          {
+            "name" : "-[ALPodsLicenses root]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Divers\/ALPodsLicenses.m",
+            "lines" : "{18, 1}"
+          },
+          {
+            "name" : "-[ALRLMObject modelCustomTransformFromDictionary:]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Realm\/ALRLMObject.m",
+            "lines" : "{526, 1}"
+          },
+          {
+            "name" : "-[ALRLMObject modelCustomTransformToDictionary:]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Realm\/ALRLMObject.m",
+            "lines" : "{971, 1}"
+          },
+          {
+            "name" : "-[HelloView test]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/HelloView\/HelloView.m",
+            "lines" : "{69, 1}"
+          },
+          {
+            "name" : "-[HelloView xibSetup]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/HelloView\/HelloView.m",
+            "lines" : "{44, 1}"
+          },
+          {
+            "name" : "-[HTTPRequest launch_request]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Network\/HTTPRequest.m",
+            "lines" : "{331, 1}"
+          },
+          {
+            "name" : "-[NetworkRequest analyse:cacheName:shouldAppend:]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Network\/NetworkRequest.m",
+            "lines" : "{958, 1}"
+          },
+          {
+            "name" : "-[NetworkRequest cancel]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Network\/NetworkRequest.m",
+            "lines" : "{554, 1}"
+          },
+          {
+            "name" : "-[NetworkRequest launch_request]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Network\/NetworkRequest.m",
+            "lines" : "{846, 1}"
+          },
+          {
+            "name" : "-[RealmDB safe:]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Realm\/RealmDB.m",
+            "lines" : "{172, 1}"
+          },
+          {
+            "name" : "-[ViewController injection]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Playground\/ViewController.m",
+            "lines" : "{151, 1}"
+          },
+          {
+            "name" : "-[ViewController play_with_strings]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Playground\/ViewController.m",
+            "lines" : "{224, 1}"
+          },
+          {
+            "name" : "-[ViewController test_request_http]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Playground\/ViewController.m",
+            "lines" : "{298, 1}"
+          },
+          {
+            "name" : "blackBG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{238, 1}"
+          },
+          {
+            "name" : "blackFG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{218, 1}"
+          },
+          {
+            "name" : "blueBG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{232, 1}"
+          },
+          {
+            "name" : "blueFG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{212, 1}"
+          },
+          {
+            "name" : "get_time()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Basics\/Functions.m",
+            "lines" : "{580, 1}"
+          },
+          {
+            "name" : "greenBG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{231, 1}"
+          },
+          {
+            "name" : "greenFG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{211, 1}"
+          },
+          {
+            "name" : "greyBG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{236, 1}"
+          },
+          {
+            "name" : "greyFG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{216, 1}"
+          },
+          {
+            "name" : "img()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Basics\/Functions.m",
+            "lines" : "{260, 1}"
+          },
+          {
+            "name" : "keychain_store()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Basics\/Functions.m",
+            "lines" : "{484, 1}"
+          },
+          {
+            "name" : "lang()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Basics\/Functions.m",
+            "lines" : "{114, 1}"
+          },
+          {
+            "name" : "lang_with_dictionary()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Basics\/Functions.m",
+            "lines" : "{133, 1}"
+          },
+          {
+            "name" : "loop_test()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Basics\/Functions.m",
+            "lines" : "{589, 1}"
+          },
+          {
+            "name" : "memory_log()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Categories\/UIViewController\/UIViewController+ALCategories.m",
+            "lines" : "{261, 1}"
+          },
+          {
+            "name" : "onUncaughtException()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Basics\/Functions.m",
+            "lines" : "{567, 1}"
+          },
+          {
+            "name" : "orangeBG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{234, 1}"
+          },
+          {
+            "name" : "orangeFG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{214, 1}"
+          },
+          {
+            "name" : "purpleBG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{237, 1}"
+          },
+          {
+            "name" : "purpleFG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{217, 1}"
+          },
+          {
+            "name" : "redBG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{235, 1}"
+          },
+          {
+            "name" : "redFG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{215, 1}"
+          },
+          {
+            "name" : "stack_print()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Basics\/Functions.m",
+            "lines" : "{517, 1}"
+          },
+          {
+            "name" : "swf()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Basics\/Functions.m",
+            "lines" : "{242, 1}"
+          },
+          {
+            "name" : "try_or_catch()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Basics\/Functions.m",
+            "lines" : "{602, 1}"
+          },
+          {
+            "name" : "whiteBG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{233, 1}"
+          },
+          {
+            "name" : "whiteFG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{213, 1}"
+          },
+          {
+            "name" : "yellowBG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{230, 1}"
+          },
+          {
+            "name" : "yellowFG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{210, 1}"
+          }
+        ]
+      },
+      "-action:" : {
+        "callers" : [
+          {
+            "name" : "-[ViewController pouet]",
+            "file" : "file:\/\/\/Users\/vincent\/Downloads\/Xcode%20tests\/Console\/Console\/ViewController.m",
+            "lines" : "{769, 1}"
+          }
+        ]
+      },
+      "-start_client" : {
+        "callers" : [
+          {
+            "name" : "-[ViewController viewDidLoad]",
+            "file" : "file:\/\/\/Users\/vincent\/Downloads\/Xcode%20tests\/Console\/Console\/ViewController.m",
+            "lines" : "{212, 1}"
+          }
+        ]
+      },
+      "-pouet" : {
+        "callers" : [
+          {
+            "name" : "displayLinkOutputCallback()",
+            "file" : "file:\/\/\/Users\/vincent\/Downloads\/Xcode%20tests\/Console\/Console\/ViewController.m",
+            "lines" : "{391, 1}"
+          }
+        ]
+      },
+      "-test_regex" : {
+        "callers" : [
+          {
+            "name" : "+[ALLogManager addConsole]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{99, 1}"
+          }
+        ]
+      },
+      "-update_date" : {
+        "callers" : [
+          {
+            "name" : "-[ViewController injection_master]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Playground\/ViewController.m",
+            "lines" : "{175, 1}"
+          }
+        ]
+      },
+      "-setup_interface" : {
+        "callers" : [
+          {
+            "name" : "-[ViewController viewDidLoad]",
+            "file" : "file:\/\/\/Users\/vincent\/Downloads\/Xcode%20tests\/Console\/Console\/ViewController.m",
+            "lines" : "{241, 1}"
+          }
+        ]
+      },
+      "-start_server" : {
+        "callers" : [
+          {
+            "name" : "-[ViewController viewDidLoad]",
+            "file" : "file:\/\/\/Users\/vincent\/Downloads\/Xcode%20tests\/Console\/Console\/ViewController.m",
+            "lines" : "{247, 1}"
+          }
+        ]
+      },
+      "-date_string_with_interval:precise:" : {
+        "callers" : [
+          {
+            "name" : "+[ALKit_Loader load]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Basics\/ALKit_Loader.m",
+            "lines" : "{100, 1}"
+          },
+          {
+            "name" : "+[ALRLMObject save:]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Realm\/ALRLMObject.m",
+            "lines" : "{224, 1}"
+          },
+          {
+            "name" : "+[RealmDB export_to:with_password:]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Realm\/RealmDB.m",
+            "lines" : "{141, 1}"
+          },
+          {
+            "name" : "+[RealmDB migrate_if_needed_with_block:]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Realm\/RealmDB.m",
+            "lines" : "{246, 1}"
+          },
+          {
+            "name" : "+[RealmDB open_encrypted_database_with_password:]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Realm\/RealmDB.m",
+            "lines" : "{92, 1}"
+          },
+          {
+            "name" : "-[ALListHelper cellAtIndexPath:]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/TableView\/ALListHelper.m",
+            "lines" : "{263, 1}"
+          },
+          {
+            "name" : "-[ALListHelper search:]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/TableView\/ALListHelper.m",
+            "lines" : "{124, 1}"
+          },
+          {
+            "name" : "-[ALListHelper setModelsF:]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/TableView\/ALListHelper.m",
+            "lines" : "{195, 1}"
+          },
+          {
+            "name" : "-[ALListHelper viewForHeaderInSection:]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/TableView\/ALListHelper.m",
+            "lines" : "{329, 1}"
+          },
+          {
+            "name" : "-[ALPodsLicenses root]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Divers\/ALPodsLicenses.m",
+            "lines" : "{18, 1}"
+          },
+          {
+            "name" : "-[ALRLMObject modelCustomTransformFromDictionary:]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Realm\/ALRLMObject.m",
+            "lines" : "{526, 1}"
+          },
+          {
+            "name" : "-[ALRLMObject modelCustomTransformToDictionary:]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Realm\/ALRLMObject.m",
+            "lines" : "{971, 1}"
+          },
+          {
+            "name" : "-[HelloView test]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/HelloView\/HelloView.m",
+            "lines" : "{69, 1}"
+          },
+          {
+            "name" : "-[HelloView xibSetup]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/HelloView\/HelloView.m",
+            "lines" : "{44, 1}"
+          },
+          {
+            "name" : "-[HTTPRequest launch_request]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Network\/HTTPRequest.m",
+            "lines" : "{331, 1}"
+          },
+          {
+            "name" : "-[NetworkRequest analyse:cacheName:shouldAppend:]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Network\/NetworkRequest.m",
+            "lines" : "{958, 1}"
+          },
+          {
+            "name" : "-[NetworkRequest cancel]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Network\/NetworkRequest.m",
+            "lines" : "{554, 1}"
+          },
+          {
+            "name" : "-[NetworkRequest launch_request]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Network\/NetworkRequest.m",
+            "lines" : "{846, 1}"
+          },
+          {
+            "name" : "-[RealmDB safe:]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Realm\/RealmDB.m",
+            "lines" : "{172, 1}"
+          },
+          {
+            "name" : "-[ViewController injection]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Playground\/ViewController.m",
+            "lines" : "{151, 1}"
+          },
+          {
+            "name" : "-[ViewController play_with_strings]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Playground\/ViewController.m",
+            "lines" : "{224, 1}"
+          },
+          {
+            "name" : "-[ViewController test_request_http]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Playground\/ViewController.m",
+            "lines" : "{298, 1}"
+          },
+          {
+            "name" : "blackBG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{238, 1}"
+          },
+          {
+            "name" : "blackFG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{218, 1}"
+          },
+          {
+            "name" : "blueBG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{232, 1}"
+          },
+          {
+            "name" : "blueFG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{212, 1}"
+          },
+          {
+            "name" : "get_time()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Basics\/Functions.m",
+            "lines" : "{580, 1}"
+          },
+          {
+            "name" : "greenBG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{231, 1}"
+          },
+          {
+            "name" : "greenFG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{211, 1}"
+          },
+          {
+            "name" : "greyBG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{236, 1}"
+          },
+          {
+            "name" : "greyFG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{216, 1}"
+          },
+          {
+            "name" : "img()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Basics\/Functions.m",
+            "lines" : "{260, 1}"
+          },
+          {
+            "name" : "keychain_store()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Basics\/Functions.m",
+            "lines" : "{484, 1}"
+          },
+          {
+            "name" : "lang()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Basics\/Functions.m",
+            "lines" : "{114, 1}"
+          },
+          {
+            "name" : "lang_with_dictionary()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Basics\/Functions.m",
+            "lines" : "{133, 1}"
+          },
+          {
+            "name" : "loop_test()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Basics\/Functions.m",
+            "lines" : "{589, 1}"
+          },
+          {
+            "name" : "memory_log()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Categories\/UIViewController\/UIViewController+ALCategories.m",
+            "lines" : "{261, 1}"
+          },
+          {
+            "name" : "onUncaughtException()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Basics\/Functions.m",
+            "lines" : "{567, 1}"
+          },
+          {
+            "name" : "orangeBG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{234, 1}"
+          },
+          {
+            "name" : "orangeFG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{214, 1}"
+          },
+          {
+            "name" : "purpleBG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{237, 1}"
+          },
+          {
+            "name" : "purpleFG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{217, 1}"
+          },
+          {
+            "name" : "redBG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{235, 1}"
+          },
+          {
+            "name" : "redFG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{215, 1}"
+          },
+          {
+            "name" : "stack_print()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Basics\/Functions.m",
+            "lines" : "{517, 1}"
+          },
+          {
+            "name" : "swf()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Basics\/Functions.m",
+            "lines" : "{242, 1}"
+          },
+          {
+            "name" : "try_or_catch()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Basics\/Functions.m",
+            "lines" : "{602, 1}"
+          },
+          {
+            "name" : "whiteBG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{233, 1}"
+          },
+          {
+            "name" : "whiteFG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{213, 1}"
+          },
+          {
+            "name" : "yellowBG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{230, 1}"
+          },
+          {
+            "name" : "yellowFG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{210, 1}"
+          }
+        ]
+      },
+      "-mouse_tracking_back" : {
+        "callers" : [
+          {
+            "name" : "-[ViewController action_button]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Playground\/ViewController.m",
+            "lines" : "{227, 1}"
+          },
+          {
+            "name" : "-[ViewController injection_master]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Playground\/ViewController.m",
+            "lines" : "{177, 1}"
+          }
+        ]
+      },
+      "-did_receive:" : {
+        "callers" : [
+          {
+            "name" : "-[ViewController pouet]",
+            "file" : "file:\/\/\/Users\/vincent\/Downloads\/Xcode%20tests\/Console\/Console\/ViewController.m",
+            "lines" : "{820, 1}"
+          }
+        ]
+      },
+      "-update_stats" : {
+        "callers" : [
+          {
+            "name" : "-[ViewController action_clear:]",
+            "file" : "file:\/\/\/Users\/vincent\/Downloads\/Xcode%20tests\/Console\/Console\/ViewController.m",
+            "lines" : "{902, 1}"
+          },
+          {
+            "name" : "-[ViewController tableView_endUpdates]",
+            "file" : "file:\/\/\/Users\/vincent\/Downloads\/Xcode%20tests\/Console\/Console\/ViewController.m",
+            "lines" : "{618, 1}"
+          }
+        ]
+      },
+      "-client_send:" : {
+        "callers" : [
+          {
+            "name" : "-[ViewController viewDidLoad]",
+            "file" : "file:\/\/\/Users\/vincent\/Downloads\/Xcode%20tests\/Console\/Console\/ViewController.m",
+            "lines" : "{241, 1}"
+          }
+        ]
+      }
+    }
+  },
+  "file:\/\/\/Applications\/Xcode.app\/Contents\/Developer\/Platforms\/MacOSX.platform\/Developer\/SDKs\/MacOSX.sdk\/System\/Library\/Frameworks\/AppKit.framework\/Versions\/C\/Headers\/NSFontManager.h" : {
+
+  },
+  "file:\/\/\/Users\/vincent\/MEGA\/Dev\/Projets\/Work\/XCode%20Map\/XcodeMapPlugin\/XcodeMapPlugin\/XcodeMapPlugin.m" : {
+    "XcodeMapPlugin" : {
+      "-consume_brackets:" : {
+        "callers" : [
+          {
+            "name" : "-[XcodeMapPlugin mouse_up]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/Projets\/Work\/XCode%20Map\/XcodeMapPlugin\/XcodeMapPlugin\/XcodeMapPlugin.m",
+            "lines" : "{3096, 1}"
+          },
+          {
+            "name" : "-[XcodeMapPlugin prepare_methods_do:]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/Projets\/Work\/XCode%20Map\/XcodeMapPlugin\/XcodeMapPlugin\/XcodeMapPlugin.m",
+            "lines" : "{1282, 1}"
+          },
+          {
+            "name" : "-[XcodeMapPlugin source_code_edited_reload:]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/Projets\/Work\/XCode%20Map\/XcodeMapPlugin\/XcodeMapPlugin\/XcodeMapPlugin.m",
+            "lines" : "{1657, 1}"
+          }
+        ]
+      },
+      "-debug_log" : {
+        "callers" : [
+          {
+            "name" : "-[XcodeMapPlugin setup]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/Projets\/Work\/XCode%20Map\/XcodeMapPlugin\/XcodeMapPlugin\/XcodeMapPlugin.m",
+            "lines" : "{614, 1}"
+          }
+        ]
+      }
+    }
+  },
+  "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Playground\/ViewController.m" : {
+    "ViewController" : {
+      "-client_send:" : {
+        "callers" : [
+          {
+            "name" : "-[ViewController viewDidLoad]",
+            "file" : "file:\/\/\/Users\/vincent\/Downloads\/Xcode%20tests\/Console\/Console\/ViewController.m",
+            "lines" : "{271, 1}"
+          }
+        ]
+      },
+      "-test_realm" : {
+        "callers" : [
+          {
+            "name" : "-[ViewController action_button]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Playground\/ViewController.m",
+            "lines" : "{227, 1}"
+          },
+          {
+            "name" : "-[ViewController injection_master]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Playground\/ViewController.m",
+            "lines" : "{177, 1}"
+          }
+        ]
+      },
+      "-play_with_strings" : {
+        "callers" : [
+          {
+            "name" : "-[ViewController action_button]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Playground\/ViewController.m",
+            "lines" : "{227, 1}"
+          },
+          {
+            "name" : "-[ViewController injection_master]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Playground\/ViewController.m",
+            "lines" : "{177, 1}"
+          }
+        ]
+      }
+    }
+  },
+  "file:\/\/\/Users\/vincent\/MEGA\/Dev\/Projets\/Work\/XCode%20Map\/XcodeMapPlugin\/XcodeMapPlugin\/headers\/Xcode-headers.h" : {
+
+  },
+  "file:\/\/\/Users\/vincent\/Downloads\/Xcode%20tests\/Console\/Console\/Message.m" : {
+    "Message" : {
+      "+initWithDictionary:" : {
+        "callers" : [
+          {
+            "name" : "+[Message messagesWithJsonString:]",
+            "file" : "file:\/\/\/Users\/vincent\/Downloads\/Xcode%20tests\/Console\/Console\/Message.m",
+            "lines" : "{76, 1}"
+          }
+        ]
+      },
+      "+messagesWithJsonString:" : {
+        "callers" : [
+          {
+            "name" : "-[ViewController socket_did_receive:]",
+            "file" : "file:\/\/\/Users\/vincent\/Downloads\/Xcode%20tests\/Console\/Console\/ViewController.m",
+            "lines" : "{480, 1}"
+          }
+        ]
+      },
+      "+load" : {
+        "callers" : [
+          {
+            "name" : "-[ViewController notif:]",
+            "file" : "file:\/\/\/Users\/vincent\/Downloads\/Xcode%20tests\/Console\/Console\/ViewController.m",
+            "lines" : "{771, 1}"
+          }
+        ]
+      },
+      "-make_attributed" : {
+        "callers" : [
+          {
+            "name" : "+[Message initWithDictionary:]",
+            "file" : "file:\/\/\/Users\/vincent\/Downloads\/Xcode%20tests\/Console\/Console\/Message.m",
+            "lines" : "{155, 1}"
+          }
+        ]
+      }
+    }
+  },
+  "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m" : {
+    "ALLogManager" : {
+      "+addConsole" : {
+        "callers" : [
+          {
+            "name" : "+[ALKit_Loader load]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Basics\/ALKit_Loader.m",
+            "lines" : "{35, 1}"
+          },
+          {
+            "name" : "+[ALLogManager sharedInstance]",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{54, 1}"
+          }
+        ]
+      },
+      "+colorize_in:end:text:" : {
+        "callers" : [
+          {
+            "name" : "colorFG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{225, 1}"
+          }
+        ]
+      },
+      "+colorize_bg_in:end:text:" : {
+        "callers" : [
+          {
+            "name" : "colorBG()",
+            "file" : "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m",
+            "lines" : "{226, 1}"
+          }
+        ]
+      }
+    }
+  },
+  "file:\/\/\/Users\/vincent\/Downloads\/Xcode%20tests\/Console\/Console\/Tools\/INDSequentialTextSelectionManager.m" : {
+    "INDSequentialTextSelectionManager" : {
+      "-unregisterTextView:" : {
+        "callers" : [
+          {
+            "name" : "-[INDSequentialTextSelectionManager registerTextView:withUniqueIdentifier:transformationBlock:]",
+            "file" : "file:\/\/\/Users\/vincent\/Downloads\/Xcode%20tests\/Console\/Console\/Tools\/INDSequentialTextSelectionManager.m",
+            "lines" : "{574, 1}"
+          }
+        ]
+      }
+    }
+  }
+}

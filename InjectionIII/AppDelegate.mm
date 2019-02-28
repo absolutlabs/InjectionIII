@@ -100,7 +100,7 @@ AppDelegate *appDelegate;
 //            image.template = TRUE;
             statusItem.image = image;
             statusItem.alternateImage = statusItem.image;
-            startItem.enabled = [tiffName isEqualToString:@"InjectionIdle"];
+            // startItem.enabled = [tiffName isEqualToString:@"InjectionIdle"];
             xprobeItem.enabled = !startItem.enabled;
         }
     });
@@ -111,6 +111,15 @@ AppDelegate *appDelegate;
 }
 
 - (IBAction)autoInject:(NSMenuItem *)sender {
+    NSLog(@"---- auto inject ! ----");
+    
+    [NSNotificationCenter.defaultCenter postNotificationName:@"INJECT_CHANGED_FILES" object:nil];
+    
+//    [[NSAlert alertWithMessageText: @"Injection Helper"
+//                     defaultButton: @"OK" alternateButton:@"Cancel" otherButton:nil
+//         informativeTextWithFormat: @"balibump"] runModal];
+//    
+        
 #if 0
     NSError *error = nil;
     // Install helper tool

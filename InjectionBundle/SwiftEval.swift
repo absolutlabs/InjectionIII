@@ -158,7 +158,7 @@ public class SwiftEval: NSObject {
     /// Error handler
     @objc public var evalError = {
         (_ message: String) -> Error in
-        print("*** \(message) ***")
+        print("***| \(message) |***")
         return NSError(domain: "SwiftEval", code: -1, userInfo: [NSLocalizedDescriptionKey: message])
     }
 
@@ -303,7 +303,7 @@ public class SwiftEval: NSObject {
 
         let projectDir = projectFile.deletingLastPathComponent().path
 
-        _ = evalError("Compiling \(sourceFile)")
+        //_ = evalError("Compiling \(sourceFile)")
 
         guard shell(command: """
                 (cd "\(projectDir.escaping("$"))" && \(compileCommand) -o \(tmpfile).o >\(logfile) 2>&1)
@@ -368,7 +368,8 @@ public class SwiftEval: NSObject {
 
         // load patched .dylib into process with new version of class
 
-        print("Loading .dylib - Ignore any duplicate class warning...")
+//        print("Loading .dylib - Ignore any duplicate class warning...")
+        print("\n")
         guard let dl = dlopen("\(tmpfile).dylib", RTLD_NOW) else {
             throw evalError("dlopen() error: \(String(cString: dlerror()))")
         }
@@ -595,7 +596,7 @@ public class SwiftEval: NSObject {
         }
 
         for relative in ["DerivedData", "build/DerivedData",
-                         "Library/Developer/Xcode/DerivedData"] {
+                         "Library/Developer/Xcode/DerivedData"] { // Volumes/RAM/DerivedData
             let derived = url.appendingPathComponent(relative)
             if FileManager.default.fileExists(atPath: derived.path) {
                 return derived

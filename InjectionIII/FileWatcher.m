@@ -18,14 +18,15 @@ static void fileCallback(ConstFSEventStreamRef streamRef,
                          const FSEventStreamEventFlags eventFlags[],
                          const FSEventStreamEventId eventIds[]) {
     FileWatcher *self = (__bridge FileWatcher *)clientCallBackInfo;
-    [self performSelectorOnMainThread:@selector(filesChanged:)
-                           withObject:(__bridge id)eventPaths waitUntilDone:NO];
+    [self performSelectorOnMainThread: @selector(filesChanged:)
+                           withObject: (__bridge id)eventPaths waitUntilDone:NO];
 }
 
 - (instancetype)initWithRoot:(NSString *)projectRoot plugin:(InjectionCallback)callback;
 {
     if ((self = [super init])) {
         self.callback = callback;
+        self.changed = [NSMutableSet new];
         static struct FSEventStreamContext context;
         context.info = (__bridge void *)self;
         fileEvents = FSEventStreamCreate(kCFAllocatorDefault,
@@ -36,6 +37,8 @@ static void fileCallback(ConstFSEventStreamRef streamRef,
                                          kFSEventStreamCreateFlagFileEvents);
         FSEventStreamScheduleWithRunLoop(fileEvents, CFRunLoopGetMain(), kCFRunLoopDefaultMode);
         FSEventStreamStart(fileEvents);
+        
+        [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(inject_changed_files) name:@"INJECT_CHANGED_FILES" object:nil];
     }
 
     return self;
@@ -44,19 +47,20 @@ static void fileCallback(ConstFSEventStreamRef streamRef,
 - (void)filesChanged:(NSArray *)changes;
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSMutableSet *changed = [NSMutableSet new];
+    
 
-    for (NSString *path in changes)
-        if ([path rangeOfString:INJECTABLE_PATTERN
-                        options:NSRegularExpressionSearch].location != NSNotFound &&
-            [path rangeOfString:@"DerivedData/|InjectionProject/|main.mm?$"
-                        options:NSRegularExpressionSearch].location == NSNotFound &&
-            [fileManager fileExistsAtPath:path])
-            [changed addObject:path];
+    for (NSString *path in changes){
+        if (path.length > 0 && [path rangeOfString: INJECTABLE_PATTERN
+                        options: NSRegularExpressionSearch].location != NSNotFound &&
+            [path rangeOfString: @"DerivedData/|InjectionProject/|main.mm?$"
+                        options: NSRegularExpressionSearch].location == NSNotFound &&
+            [fileManager fileExistsAtPath: path]) {
+            
+            [self.changed addObject: path];
+        }
 
-    //NSLog( @"filesChanged: %@", changed );
-    if (changed.count)
-        self.callback([[changed objectEnumerator] allObjects]);
+    }
+    
 }
 
 - (void)dealloc;
@@ -65,5 +69,17 @@ static void fileCallback(ConstFSEventStreamRef streamRef,
     FSEventStreamInvalidate(fileEvents);
     FSEventStreamRelease(fileEvents);
 }
+
+- (void) inject_changed_files
+{
+    NSLog(@"INJECT_CHANGED_FILES");
+    
+    if (self.changed.count > 0) {
+        self.callback([[self.changed objectEnumerator] allObjects]);
+        [self.changed removeAllObjects];
+    }
+}
+
+
 
 @end

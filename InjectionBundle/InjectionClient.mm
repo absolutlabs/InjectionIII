@@ -150,10 +150,12 @@ static struct {
         else
             dispatch_async(dispatch_get_main_queue(), ^{
                 NSError *err = nil;
-                if ([swiftSource hasPrefix:@"LOAD "])
-                    [SwiftInjection injectWithTmpfile:[swiftSource substringFromIndex:@"LOAD ".length] error:&err];
-                else if ([swiftSource hasPrefix:@"INJECT "]) {
-                    NSString *changed = [swiftSource substringFromIndex:@"INJECT ".length];
+                if ([swiftSource hasPrefix:@"LOAD "]) {
+                    // NSLog(@"*** LOAD ");
+                    [SwiftInjection injectWithTmpfile:[swiftSource substringFromIndex:@"LOAD ".length] notify:YES  error:&err];
+                } else if ([swiftSource hasPrefix:@"INJECTS "] || [swiftSource hasPrefix:@"INJECTN "]) {
+                    
+                    NSString *changed = [swiftSource substringFromIndex:@"INJECTS ".length];
 #if __has_include("iOSInjection-Swift.h") || __has_include("iOSInjection10-Swift.h")
                     if ([changed hasSuffix:@"storyboard"] || [changed hasSuffix:@"xib"]) {
                         static NSMutableDictionary *allOrder;
@@ -226,7 +228,8 @@ static struct {
                     }
                     else
 #endif
-                        [SwiftInjection injectWithOldClass:nil classNameOrFile:changed];
+                        [SwiftInjection injectWithOldClass:nil classNameOrFile:changed notify: [swiftSource hasPrefix:@"INJECTN "]];
+                    
                 }
 #ifdef XPROBE_PORT
                 else if ([swiftSource hasPrefix:@"XPROBE"]) {

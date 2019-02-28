@@ -96,6 +96,13 @@ static NSMutableDictionary *projectInjected = [NSMutableDictionary new];
                              NSHomeDirectory(), [projectName stringByReplacingOccurrencesOfString:@"[\\s]+" withString:@"_"
                                                   options:NSRegularExpressionSearch range:NSMakeRange(0, projectName.length)],
                              [XcodeHash hashStringForPath:projectFile]];
+
+//    NSString *derivedLogs = [NSString stringWithFormat:@"/Volumes/RAM/DerivedData/%@-%@/Logs/Build",
+//                             [projectName stringByReplacingOccurrencesOfString: @"[\\s]+" withString:@"_"
+//                                                                       options: NSRegularExpressionSearch
+//                                                                         range: NSMakeRange(0, projectName.length)],
+//                             [XcodeHash hashStringForPath:projectFile]];
+
     if ([[NSFileManager defaultManager] fileExistsAtPath:derivedLogs])
         builder.derivedLogs = derivedLogs;
     else
@@ -111,7 +118,7 @@ static NSMutableDictionary *projectInjected = [NSMutableDictionary new];
     [appDelegate setMenuIcon:@"InjectionOK"];
     appDelegate.lastConnection = self;
 
-    auto inject = ^(NSString *swiftSource) {
+    auto inject = ^(NSString *swiftSource, BOOL notify) {
         NSControlStateValue watcherState = appDelegate.enableWatcher.state;
         dispatch_async(injectionQueue, ^{
             if (watcherState == NSControlStateValueOn) {
@@ -124,7 +131,7 @@ static NSMutableDictionary *projectInjected = [NSMutableDictionary new];
 //                        [appDelegate setMenuIcon:@"InjectionError"];
 //                }
 //                else
-                    [self writeString:[@"INJECT " stringByAppendingString:swiftSource]];
+                [self writeString:[ (notify ? @"INJECTN " : @"INJECTS ") stringByAppendingString:swiftSource]];
             }
             else
                 [self writeString:@"LOG The file watcher is turned off"];
@@ -144,7 +151,7 @@ static NSMutableDictionary *projectInjected = [NSMutableDictionary new];
         for(NSString *source in lastInjected)
             if (![source hasSuffix:@"storyboard"] && ![source hasSuffix:@"xib"] &&
                 mtime(source) > executableBuild)
-                inject(source);
+                inject(source, true);
     }
     else
         return;
@@ -155,17 +162,21 @@ static NSMutableDictionary *projectInjected = [NSMutableDictionary new];
 
     injector = ^(NSArray *changed) {
         NSTimeInterval now = [NSDate timeIntervalSinceReferenceDate];
-        for (NSString *swiftSource in changed)
+        for (int i = 0; i < changed.count; i++) {
+            NSString *swiftSource = changed [i];
             if (now > lastInjected[swiftSource].doubleValue + MIN_INJECTION_INTERVAL && now > pause) {
                 lastInjected[swiftSource] = [NSNumber numberWithDouble:now];
-                inject(swiftSource);
+                BOOL notify = i == changed.count - 1;
+                // NSLog(@"%@  ->    %@", swiftSource, notify ? @"notify" : @"no notif");
+                inject(swiftSource, notify);
             }
+        }
     };
 
     [self setProject:projectFile];
 
     // read status requests from client app
-    while (NSString *response = [self readString])
+    while (NSString *response = [self readString]) {
         if ([response hasPrefix:@"COMPLETE"])
             [appDelegate setMenuIcon:@"InjectionOK"];
         else if ([response hasPrefix:@"PAUSE "])
@@ -182,6 +193,7 @@ static NSMutableDictionary *projectInjected = [NSMutableDictionary new];
 //                     informativeTextWithFormat:@"%@",
 //                  [dylib substringFromIndex:@"ERROR ".length]] runModal];
 //            });
+    }
 
     // client app disconnected
     injector = nil;

@@ -46,13 +46,19 @@ extension NSObject {
 
     public func inject() {
         if let oldClass: AnyClass = object_getClass(self) {
-            SwiftInjection.inject(oldClass: oldClass, classNameOrFile: "\(oldClass)")
+            SwiftInjection.inject(oldClass: oldClass, classNameOrFile: "\(oldClass)", notify: false)
         }
     }
 
+    
     @objc
     public class func inject(file: String) {
-        SwiftInjection.inject(oldClass: nil, classNameOrFile: file)
+        SwiftInjection.inject(oldClass: nil, classNameOrFile: file, notify: false)
+    }
+    
+    @objc
+    public class func inject(file: String, notify: Bool) {
+        SwiftInjection.inject(oldClass: nil, classNameOrFile: file, notify: notify)
     }
 }
 
@@ -62,15 +68,16 @@ public class SwiftInjection: NSObject {
     static let testQueue = DispatchQueue(label: "INTestQueue")
 
     @objc
-    public class func inject(oldClass: AnyClass?, classNameOrFile: String) {
+    public class func inject(oldClass: AnyClass?, classNameOrFile: String, notify: Bool) {
         do {
             let tmpfile = try SwiftEval.instance.rebuildClass(oldClass: oldClass,
-                                    classNameOrFile: classNameOrFile, extra: nil)
-            try inject(tmpfile: tmpfile)
+                                                              classNameOrFile: classNameOrFile, extra: nil)
+            try inject(tmpfile: tmpfile, notify: notify)
         }
         catch {
         }
     }
+    
 
     @objc
     public class func replayInjections() -> Int {
@@ -86,7 +93,7 @@ public class SwiftInjection: NSObject {
                 if mtime("\(tmpfile).dylib") < execBuild {
                     break
                 }
-                try inject(tmpfile: tmpfile)
+                try inject(tmpfile: tmpfile, notify: false)
                 injectionNumber += 1
             }
         }
@@ -96,7 +103,7 @@ public class SwiftInjection: NSObject {
     }
 
     @objc
-    public class func inject(tmpfile: String) throws {
+    public class func inject(tmpfile: String, notify: Bool) throws {
         let newClasses = try SwiftEval.instance.loadAndInject(tmpfile: tmpfile)
         let oldClasses = //oldClass != nil ? [oldClass!] :
             newClasses.map { objc_getClass(class_getName($0)) as! AnyClass }
@@ -189,9 +196,11 @@ public class SwiftInjection: NSObject {
                     }
                 }).sweepValue(seeds)
             }
-
-            let notification = Notification.Name("INJECTION_BUNDLE_NOTIFICATION")
-            NotificationCenter.default.post(name: notification, object: oldClasses)
+            if notify {
+                print("\n\n")
+                let notification = Notification.Name("INJECTION_BUNDLE_NOTIFICATION")
+                NotificationCenter.default.post(name: notification, object: oldClasses)
+            }
         }
     }
 

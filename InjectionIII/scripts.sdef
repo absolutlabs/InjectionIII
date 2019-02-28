@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dictionary SYSTEM "file://localhost/System/Library/DTDs/sdef.dtd">
+<dictionary title="Dictionary" xmlns:xi="http://www.w3.org/2003/XInclude">
+  <!-- I have removed the standard suite as the application does not open, print... -->
+  <suite name="Injection Suite" code="rdrN" description="Injection application specific scripting facilities.">
+    <command name="do inject" code="rdrNUpdt" description="Inject Source">
+      <cocoa class="ScriptsCommand"/>
+    </command>
+    <class name="application" code="Capp">
+      <cocoa class="NSApplication"/>
+      <responds-to name="do inject">
+        <!-- Note you need to specify a method here,
+             although it is blank -->
+        <cocoa method=""/>
+      </responds-to>
+    </class>
+  </suite>
+</dictionary>

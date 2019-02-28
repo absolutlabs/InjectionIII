@@ -15,6 +15,7 @@ typedef void (^InjectionCallback)(NSArray *filesChanged);
 @interface FileWatcher : NSObject
 
 @property(copy) InjectionCallback callback;
+@property(strong) NSMutableSet *changed;
 
 - (instancetype)initWithRoot:(NSString *)projectRoot plugin:(InjectionCallback)callback;
 

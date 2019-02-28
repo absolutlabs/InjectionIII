@@ -1,0 +1,1919 @@
+{
+  "file:\/\/\/Users\/vincent\/Downloads\/Xcode%20tests\/Console\/Console\/ViewController.m" : {
+    ".lines" : {
+      "     880" : {
+        "class" : "ViewController",
+        "method" : "-action:",
+        "lines" : "{880, 16}"
+      },
+      "     996" : {
+        "class" : "ViewController",
+        "method" : "-update_stats",
+        "lines" : "{996, 10}"
+      },
+      "     463" : {
+        "class" : "ViewController",
+        "method" : "-update_date",
+        "lines" : "{463, 10}"
+      },
+      "     338" : {
+        "class" : "ViewController",
+        "method" : "-setup_interface",
+        "lines" : "{338, 30}"
+      },
+      "     969" : {
+        "class" : "ViewController",
+        "method" : "-scroll_delayed",
+        "lines" : "{969, 16}"
+      },
+      "     480" : {
+        "class" : "ViewController",
+        "method" : "-date_string_with_interval:precise:",
+        "lines" : "{480, 21}"
+      },
+      "     623" : {
+        "class" : "ViewController",
+        "method" : "-tableView_endUpdates",
+        "lines" : "{623, 13}"
+      },
+      "     433" : {
+        "class" : "ViewController",
+        "method" : "-start_display",
+        "lines" : "{433, 8}"
+      },
+      "     929" : {
+        "class" : "ViewController",
+        "method" : "-debug:",
+        "lines" : "{929, 26}"
+      },
+      "     508" : {
+        "class" : "ViewController",
+        "method" : "-socket_did_receive:",
+        "lines" : "{508, 6}"
+      },
+      "    1156" : {
+        "class" : "ViewController",
+        "method" : "-tableView:heightOfRow:",
+        "lines" : "{1156, 24}"
+      },
+      "    1102" : {
+        "class" : "ViewController",
+        "method" : "-numberOfRowsInTableView:",
+        "lines" : "{1102, 8}"
+      },
+      "     519" : {
+        "class" : "ViewController",
+        "method" : "-did_receive:",
+        "lines" : "{519, 100}"
+      },
+      "     902" : {
+        "class" : "ViewController",
+        "method" : "-action_clear:",
+        "lines" : "{902, 13}"
+      },
+      "     305" : {
+        "class" : "ViewController",
+        "method" : "-live_scroll:",
+        "lines" : "{305, 6}"
+      },
+      "     319" : {
+        "class" : "ViewController",
+        "method" : "-start_server",
+        "lines" : "{319, 9}"
+      },
+      "    1211" : {
+        "class" : "ViewController",
+        "method" : "-tableView:didAddRowView:forRow:",
+        "lines" : "{1211, 8}"
+      },
+      "    1276" : {
+        "class" : "TextViewInTableView",
+        "method" : "-awakeFromNib",
+        "lines" : "{1276, 12}"
+      },
+      "    1011" : {
+        "class" : "ViewController",
+        "method" : "-count_special_tag:",
+        "lines" : "{1011, 10}"
+      },
+      "    1117" : {
+        "class" : "ViewController",
+        "method" : "-tableView:viewForTableColumn:row:",
+        "lines" : "{1117, 34}"
+      },
+      "    1066" : {
+        "class" : "ViewController",
+        "method" : "-setup_tableView",
+        "lines" : "{1066, 17}"
+      },
+      "     764" : {
+        "class" : "ViewController",
+        "method" : "-mouse_tracking_back",
+        "lines" : "{764, 40}"
+      },
+      "    1399" : {
+        "class" : "CustomWindow",
+        "method" : "+standardWindowButton:forStyleMask:",
+        "lines" : "{1399, 8}"
+      },
+      "    1185" : {
+        "class" : "ViewController",
+        "method" : "-tableView:didRemoveRowView:forRow:",
+        "lines" : "{1185, 23}"
+      },
+      "     235" : {
+        "class" : "ViewController",
+        "method" : "-viewDidLoad",
+        "lines" : "{235, 61}"
+      },
+      "     642" : {
+        "class" : "ViewController",
+        "method" : "-pouet",
+        "lines" : "{642, 109}"
+      },
+      "    1290" : {
+        "class" : "TextViewInTableView",
+        "method" : "-scrollWheel:",
+        "lines" : "{1290, 6}"
+      },
+      "     816" : {
+        "class" : "ViewController",
+        "method" : "-show_datas_for_message:",
+        "lines" : "{816, 34}"
+      },
+      "    1325" : {
+        "class" : "TextViewInTableView",
+        "method" : "-textContainerOrigin",
+        "lines" : "{1325, 5}"
+      }
+    },
+    ".classes" : {
+      "SOCKET_KEY" : {
+
+      },
+      "SOCKET_ADDRESS" : {
+
+      },
+      "ViewController" : {
+        "-tableView:viewForTableColumn:row:" : {
+          "range" : "{20149, 704}",
+          "method" : "-tableView:viewForTableColumn:row:",
+          "class" : "ViewController",
+          "special" : 1,
+          "lines" : "{1117, 34}"
+        },
+        "-update_date" : {
+          "range" : "{6925, 254}",
+          "method" : "-update_date",
+          "class" : "ViewController",
+          "special" : 1,
+          "lines" : "{463, 10}"
+        },
+        "-date_string_with_interval:precise:" : {
+          "range" : "{7187, 729}",
+          "method" : "-date_string_with_interval:precise:",
+          "class" : "ViewController",
+          "special" : 1,
+          "lines" : "{480, 21}"
+        },
+        "-tableView:didRemoveRowView:forRow:" : {
+          "range" : "{21490, 570}",
+          "method" : "-tableView:didRemoveRowView:forRow:",
+          "class" : "ViewController",
+          "special" : 1,
+          "lines" : "{1185, 23}"
+        },
+        "-tableView:heightOfRow:" : {
+          "range" : "{20859, 625}",
+          "method" : "-tableView:heightOfRow:",
+          "class" : "ViewController",
+          "special" : 1,
+          "lines" : "{1156, 24}"
+        },
+        "-start_display" : {
+          "range" : "{6330, 258}",
+          "method" : "-start_display",
+          "class" : "ViewController",
+          "special" : 1,
+          "lines" : "{433, 8}"
+        },
+        "-mouse_tracking_back" : {
+          "range" : "{14428, 1031}",
+          "method" : "-mouse_tracking_back",
+          "class" : "ViewController",
+          "special" : 1,
+          "lines" : "{764, 40}"
+        },
+        "-tableView_endUpdates" : {
+          "range" : "{9946, 260}",
+          "method" : "-tableView_endUpdates",
+          "class" : "ViewController",
+          "special" : 1,
+          "lines" : "{623, 13}"
+        },
+        "-count_special_tag:" : {
+          "range" : "{19123, 196}",
+          "method" : "-count_special_tag:",
+          "class" : "ViewController",
+          "special" : 1,
+          "lines" : "{1011, 10}"
+        },
+        "-setup_tableView" : {
+          "range" : "{19661, 341}",
+          "method" : "-setup_tableView",
+          "class" : "ViewController",
+          "special" : 1,
+          "lines" : "{1066, 17}"
+        },
+        "-update_stats" : {
+          "range" : "{18593, 524}",
+          "method" : "-update_stats",
+          "class" : "ViewController",
+          "special" : 1,
+          "lines" : "{996, 10}"
+        },
+        "-start_server" : {
+          "range" : "{4354, 126}",
+          "method" : "-start_server",
+          "class" : "ViewController",
+          "special" : 1,
+          "lines" : "{319, 9}"
+        },
+        "-viewDidLoad" : {
+          "range" : "{2657, 1575}",
+          "method" : "-viewDidLoad",
+          "class" : "ViewController",
+          "special" : 1,
+          "lines" : "{235, 61}"
+        },
+        "-tableView:didAddRowView:forRow:" : {
+          "range" : "{22064, 364}",
+          "method" : "-tableView:didAddRowView:forRow:",
+          "class" : "ViewController",
+          "special" : 1,
+          "lines" : "{1211, 8}"
+        },
+        "-did_receive:" : {
+          "range" : "{8103, 1838}",
+          "method" : "-did_receive:",
+          "class" : "ViewController",
+          "special" : 1,
+          "lines" : "{519, 100}"
+        },
+        "-debug:" : {
+          "range" : "{17048, 1107}",
+          "method" : "-debug:",
+          "class" : "ViewController",
+          "special" : 1,
+          "lines" : "{929, 26}"
+        },
+        "-live_scroll:" : {
+          "range" : "{4242, 103}",
+          "method" : "-live_scroll:",
+          "class" : "ViewController",
+          "special" : 1,
+          "lines" : "{305, 6}"
+        },
+        "-action_clear:" : {
+          "range" : "{16770, 263}",
+          "method" : "-action_clear:",
+          "class" : "ViewController",
+          "special" : 1,
+          "lines" : "{902, 13}"
+        },
+        "-setup_interface" : {
+          "range" : "{4491, 768}",
+          "method" : "-setup_interface",
+          "class" : "ViewController",
+          "special" : 1,
+          "lines" : "{338, 30}"
+        },
+        "-numberOfRowsInTableView:" : {
+          "range" : "{20022, 119}",
+          "method" : "-numberOfRowsInTableView:",
+          "class" : "ViewController",
+          "special" : 1,
+          "lines" : "{1102, 8}"
+        },
+        "-show_datas_for_message:" : {
+          "range" : "{15472, 1035}",
+          "method" : "-show_datas_for_message:",
+          "class" : "ViewController",
+          "special" : 1,
+          "lines" : "{816, 34}"
+        },
+        "-socket_did_receive:" : {
+          "range" : "{7924, 173}",
+          "method" : "-socket_did_receive:",
+          "class" : "ViewController",
+          "special" : 1,
+          "lines" : "{508, 6}"
+        },
+        "-pouet" : {
+          "range" : "{10213, 4201}",
+          "method" : "-pouet",
+          "class" : "ViewController",
+          "special" : 1,
+          "lines" : "{642, 109}"
+        },
+        "-scroll_delayed" : {
+          "range" : "{18170, 411}",
+          "method" : "-scroll_delayed",
+          "class" : "ViewController",
+          "special" : 1,
+          "lines" : "{969, 16}"
+        },
+        "-action:" : {
+          "range" : "{16538, 225}",
+          "method" : "-action:",
+          "class" : "ViewController",
+          "special" : 1,
+          "lines" : "{880, 16}"
+        }
+      },
+      "TextViewInTableView" : {
+        "-scrollWheel:" : {
+          "range" : "{22870, 93}",
+          "method" : "-scrollWheel:",
+          "class" : "TextViewInTableView",
+          "special" : 1,
+          "lines" : "{1290, 6}"
+        },
+        "-textContainerOrigin" : {
+          "range" : "{23408, 89}",
+          "method" : "-textContainerOrigin",
+          "class" : "TextViewInTableView",
+          "special" : 1,
+          "lines" : "{1325, 5}"
+        },
+        "-awakeFromNib" : {
+          "range" : "{22525, 342}",
+          "method" : "-awakeFromNib",
+          "class" : "TextViewInTableView",
+          "special" : 1,
+          "lines" : "{1276, 12}"
+        }
+      },
+      "OFFSET_BOTTOM" : {
+
+      },
+      "ALNSTableCellView" : {
+
+      },
+      "todo : Balibump" : {
+
+      },
+      "fix : Balibump" : {
+
+      },
+      "CustomWindow" : {
+        "+standardWindowButton:forStyleMask:" : {
+          "range" : "{24600, 235}",
+          "method" : "+standardWindowButton:forStyleMask:",
+          "class" : "CustomWindow",
+          "special" : 1,
+          "lines" : "{1399, 8}"
+        }
+      },
+      "-" : {
+
+      },
+      "mark : UITableViewDataSource" : {
+
+      }
+    }
+  },
+  "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Playground\/ViewController.m" : {
+    ".lines" : {
+      "      66" : {
+        "class" : "ViewController",
+        "method" : "-viewDidLoad",
+        "lines" : "{66, 29}"
+      },
+      "     155" : {
+        "class" : "ViewController",
+        "method" : "-injection",
+        "lines" : "{155, 4}"
+      },
+      "     324" : {
+        "class" : "ViewController",
+        "method" : "-test_request_http",
+        "lines" : "{324, 35}"
+      },
+      "     293" : {
+        "class" : "ViewController",
+        "method" : "-test_realm",
+        "lines" : "{293, 23}"
+      },
+      "     232" : {
+        "class" : "ViewController",
+        "method" : "-play_with_strings",
+        "lines" : "{232, 54}"
+      },
+      "     223" : {
+        "class" : "ViewController",
+        "method" : "-action_button",
+        "lines" : "{223, 6}"
+      },
+      "     166" : {
+        "class" : "ViewController",
+        "method" : "-injection_master",
+        "lines" : "{166, 18}"
+      }
+    },
+    ".classes" : {
+      "ViewController" : {
+        "-injection_master" : {
+          "range" : "{2138, 288}",
+          "method" : "-injection_master",
+          "class" : "ViewController",
+          "special" : 1,
+          "lines" : "{166, 18}"
+        },
+        "-play_with_strings" : {
+          "range" : "{3247, 1097}",
+          "method" : "-play_with_strings",
+          "class" : "ViewController",
+          "special" : 1,
+          "lines" : "{232, 54}"
+        },
+        "-test_request_http" : {
+          "range" : "{4613, 572}",
+          "method" : "-test_request_http",
+          "class" : "ViewController",
+          "special" : 1,
+          "lines" : "{324, 35}"
+        },
+        "-injection" : {
+          "range" : "{2084, 46}",
+          "method" : "-injection",
+          "class" : "ViewController",
+          "special" : 1,
+          "lines" : "{155, 4}"
+        },
+        "-test_realm" : {
+          "range" : "{4352, 252}",
+          "method" : "-test_realm",
+          "class" : "ViewController",
+          "special" : 1,
+          "lines" : "{293, 23}"
+        },
+        "-viewDidLoad" : {
+          "range" : "{535, 376}",
+          "method" : "-viewDidLoad",
+          "class" : "ViewController",
+          "special" : 1,
+          "lines" : "{66, 29}"
+        },
+        "-action_button" : {
+          "range" : "{3158, 85}",
+          "method" : "-action_button",
+          "class" : "ViewController",
+          "special" : 1,
+          "lines" : "{223, 6}"
+        }
+      },
+      "SOCKET_KEY" : {
+
+      },
+      "SOCKET_ADDRESS" : {
+
+      }
+    }
+  },
+  "file:\/\/\/Users\/vincent\/MEGA\/Dev\/Projets\/Work\/XCode%20Map\/XcodeMapPlugin\/XcodeMapPlugin\/XcodeMapPlugin.m" : {
+    ".lines" : {
+      "     361" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "+sharedPlugin",
+        "lines" : "{361, 4}"
+      },
+      "    2650" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-open_file:",
+        "lines" : "{2650, 16}"
+      },
+      "    1951" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-prepare_brackets:",
+        "lines" : "{1951, 74}"
+      },
+      "     371" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-dealloc",
+        "lines" : "{371, 5}"
+      },
+      "    1455" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-callers_revalid",
+        "lines" : "{1455, 7}"
+      },
+      "    3913" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-balibump:",
+        "lines" : "{3913, 4}"
+      },
+      "    3920" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-copy_in_console:",
+        "lines" : "{3920, 50}"
+      },
+      "    3010" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-open:range:",
+        "lines" : "{3010, 7}"
+      },
+      "    3424" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-currentProjectName",
+        "lines" : "{3424, 13}"
+      },
+      "    1038" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-prepare_methods:",
+        "lines" : "{1038, 26}"
+      },
+      "    2670" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-open:in:",
+        "lines" : "{2670, 14}"
+      },
+      "    1620" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-sourceEditor_has_been_edited_do:",
+        "lines" : "{1620, 11}"
+      },
+      "    2804" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-find_and_define_editors_with_last:",
+        "lines" : "{2804, 141}"
+      },
+      "    1544" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-editor_for_scrollView:",
+        "lines" : "{1544, 33}"
+      },
+      "    2735" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-open_caller:",
+        "lines" : "{2735, 45}"
+      },
+      "    1468" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-callers_did_it_finish",
+        "lines" : "{1468, 12}"
+      },
+      "    3443" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-currentDocumentName",
+        "lines" : "{3443, 8}"
+      },
+      "    1072" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-prepare_methods_do:",
+        "lines" : "{1072, 215}"
+      },
+      "    3026" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-class_method_in:",
+        "lines" : "{3026, 37}"
+      },
+      "    2691" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-open:mouse:",
+        "lines" : "{2691, 28}"
+      },
+      "     397" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-initWithBundle:",
+        "lines" : "{397, 163}"
+      },
+      "    3883" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-process_debug_infos:",
+        "lines" : "{3883, 26}"
+      },
+      "    3393" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-insert_text:",
+        "lines" : "{3393, 14}"
+      },
+      "    3458" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-current_callers",
+        "lines" : "{3458, 48}"
+      },
+      "    3529" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-makeTouchBar",
+        "lines" : "{3529, 15}"
+      },
+      "    1639" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-source_code_edited_reload:",
+        "lines" : "{1639, 23}"
+      },
+      "    1800" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-save_datas",
+        "lines" : "{1800, 13}"
+      },
+      "     977" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-prepare_touchBar:",
+        "lines" : "{977, 37}"
+      },
+      "     627" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-setup_brackets",
+        "lines" : "{627, 24}"
+      },
+      "    1313" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-analyse_genius_results:",
+        "lines" : "{1313, 14}"
+      },
+      "    2792" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-window_for_editor:",
+        "lines" : "{2792, 4}"
+      },
+      "    1588" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-sourceEditor_has_been_edited:",
+        "lines" : "{1588, 29}"
+      },
+      "    3080" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-mouse_up",
+        "lines" : "{3080, 85}"
+      },
+      "    1680" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-consume_editor_insets:",
+        "lines" : "{1680, 69}"
+      },
+      "    3565" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-action_test",
+        "lines" : "{3565, 25}"
+      },
+      "    1823" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-save:name:",
+        "lines" : "{1823, 35}"
+      },
+      "    2110" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-consume_brackets:",
+        "lines" : "{2110, 304}"
+      },
+      "     586" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-setup",
+        "lines" : "{586, 34}"
+      },
+      "    2951" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-center_point_of_editor:",
+        "lines" : "{2951, 34}"
+      },
+      "     810" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-notif_ide_did_save:",
+        "lines" : "{810, 14}"
+      },
+      "     740" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-notif_did_scroll:",
+        "lines" : "{740, 58}"
+      },
+      "    2042" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-bracket_recursive_for:",
+        "lines" : "{2042, 50}"
+      },
+      "     658" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-set_project_url:",
+        "lines" : "{658, 51}"
+      },
+      "    1338" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-prepare_callers:",
+        "lines" : "{1338, 109}"
+      },
+      "    3727" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-debug_process_session:",
+        "lines" : "{3727, 7}"
+      },
+      "    2467" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-scroll_editor:to_range:",
+        "lines" : "{2467, 13}"
+      },
+      "    2490" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-scroll_editor:to_line_range:should_center:",
+        "lines" : "{2490, 127}"
+      },
+      "    3737" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-debug_log",
+        "lines" : "{3737, 144}"
+      },
+      "    1777" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-action_save",
+        "lines" : "{1777, 13}"
+      },
+      "    1504" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-editor_for_sourceEditorView:",
+        "lines" : "{1504, 32}"
+      },
+      "    3186" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-show_test_function",
+        "lines" : "{3186, 184}"
+      },
+      "    1870" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-load:",
+        "lines" : "{1870, 23}"
+      },
+      "    3691" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-show_utilities:",
+        "lines" : "{3691, 12}"
+      },
+      "     907" : {
+        "class" : "XcodeMapPlugin",
+        "method" : "-prepare_editor:",
+        "lines" : "{907, 58}"
+      }
+    },
+    ".classes" : {
+      "XcodeMapPlugin" : {
+        "-window_for_editor:" : {
+          "range" : "{47514, 115}",
+          "method" : "-window_for_editor:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{2792, 4}"
+        },
+        "-source_code_edited_reload:" : {
+          "range" : "{26551, 335}",
+          "method" : "-source_code_edited_reload:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{1639, 23}"
+        },
+        "-find_and_define_editors_with_last:" : {
+          "range" : "{47638, 2620}",
+          "method" : "-find_and_define_editors_with_last:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{2804, 141}"
+        },
+        "-dealloc" : {
+          "range" : "{4628, 89}",
+          "method" : "-dealloc",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{371, 5}"
+        },
+        "-callers_revalid" : {
+          "range" : "{24103, 102}",
+          "method" : "-callers_revalid",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{1455, 7}"
+        },
+        "-callers_did_it_finish" : {
+          "range" : "{24212, 180}",
+          "method" : "-callers_did_it_finish",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{1468, 12}"
+        },
+        "-save:name:" : {
+          "range" : "{28944, 853}",
+          "method" : "-save:name:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{1823, 35}"
+        },
+        "-prepare_methods_do:" : {
+          "range" : "{15372, 5568}",
+          "method" : "-prepare_methods_do:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{1072, 215}"
+        },
+        "-action_test" : {
+          "range" : "{59744, 392}",
+          "method" : "-action_test",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{3565, 25}"
+        },
+        "+sharedPlugin" : {
+          "range" : "{4562, 59}",
+          "method" : "+sharedPlugin",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{361, 4}"
+        },
+        "-open:mouse:" : {
+          "range" : "{45839, 789}",
+          "method" : "-open:mouse:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{2691, 28}"
+        },
+        "-sourceEditor_has_been_edited_do:" : {
+          "range" : "{26153, 389}",
+          "method" : "-sourceEditor_has_been_edited_do:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{1620, 11}"
+        },
+        "-notif_ide_did_save:" : {
+          "range" : "{13121, 165}",
+          "method" : "-notif_ide_did_save:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{810, 14}"
+        },
+        "-action_save" : {
+          "range" : "{28518, 227}",
+          "method" : "-action_save",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{1777, 13}"
+        },
+        "-set_project_url:" : {
+          "range" : "{10931, 1138}",
+          "method" : "-set_project_url:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{658, 51}"
+        },
+        "-scroll_editor:to_line_range:should_center:" : {
+          "range" : "{41170, 3997}",
+          "method" : "-scroll_editor:to_line_range:should_center:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{2490, 127}"
+        },
+        "-open_file:" : {
+          "range" : "{45201, 390}",
+          "method" : "-open_file:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{2650, 16}"
+        },
+        "-currentProjectName" : {
+          "range" : "{57958, 488}",
+          "method" : "-currentProjectName",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{3424, 13}"
+        },
+        "-prepare_callers:" : {
+          "range" : "{21212, 2882}",
+          "method" : "-prepare_callers:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{1338, 109}"
+        },
+        "-prepare_methods:" : {
+          "range" : "{14897, 466}",
+          "method" : "-prepare_methods:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{1038, 26}"
+        },
+        "-load:" : {
+          "range" : "{29810, 656}",
+          "method" : "-load:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{1870, 23}"
+        },
+        "-initWithBundle:" : {
+          "range" : "{4739, 5173}",
+          "method" : "-initWithBundle:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{397, 163}"
+        },
+        "-show_test_function" : {
+          "range" : "{53890, 3756}",
+          "method" : "-show_test_function",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{3186, 184}"
+        },
+        "-makeTouchBar" : {
+          "range" : "{59510, 212}",
+          "method" : "-makeTouchBar",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{3529, 15}"
+        },
+        "-class_method_in:" : {
+          "range" : "{51278, 707}",
+          "method" : "-class_method_in:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{3026, 37}"
+        },
+        "-mouse_up" : {
+          "range" : "{52003, 1865}",
+          "method" : "-mouse_up",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{3080, 85}"
+        },
+        "-editor_for_scrollView:" : {
+          "range" : "{24991, 547}",
+          "method" : "-editor_for_scrollView:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{1544, 33}"
+        },
+        "-prepare_editor:" : {
+          "range" : "{13392, 934}",
+          "method" : "-prepare_editor:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{907, 58}"
+        },
+        "-prepare_brackets:" : {
+          "range" : "{30548, 1243}",
+          "method" : "-prepare_brackets:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{1951, 74}"
+        },
+        "-scroll_editor:to_range:" : {
+          "range" : "{40811, 314}",
+          "method" : "-scroll_editor:to_range:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{2467, 13}"
+        },
+        "-show_utilities:" : {
+          "range" : "{60427, 258}",
+          "method" : "-show_utilities:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{3691, 12}"
+        },
+        "-consume_brackets:" : {
+          "range" : "{32847, 7891}",
+          "method" : "-consume_brackets:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{2110, 304}"
+        },
+        "-insert_text:" : {
+          "range" : "{57721, 219}",
+          "method" : "-insert_text:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{3393, 14}"
+        },
+        "-setup_brackets" : {
+          "range" : "{10418, 505}",
+          "method" : "-setup_brackets",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{627, 24}"
+        },
+        "-copy_in_console:" : {
+          "range" : "{66655, 1639}",
+          "method" : "-copy_in_console:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{3920, 50}"
+        },
+        "-setup" : {
+          "range" : "{9939, 471}",
+          "method" : "-setup",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{586, 34}"
+        },
+        "-editor_for_sourceEditorView:" : {
+          "range" : "{24439, 543}",
+          "method" : "-editor_for_sourceEditorView:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{1504, 32}"
+        },
+        "-save_datas" : {
+          "range" : "{28756, 177}",
+          "method" : "-save_datas",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{1800, 13}"
+        },
+        "-current_callers" : {
+          "range" : "{58644, 842}",
+          "method" : "-current_callers",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{3458, 48}"
+        },
+        "-balibump:" : {
+          "range" : "{66551, 100}",
+          "method" : "-balibump:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{3913, 4}"
+        },
+        "-notif_did_scroll:" : {
+          "range" : "{12122, 986}",
+          "method" : "-notif_did_scroll:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{740, 58}"
+        },
+        "-currentDocumentName" : {
+          "range" : "{58453, 183}",
+          "method" : "-currentDocumentName",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{3443, 8}"
+        },
+        "-open:in:" : {
+          "range" : "{45596, 235}",
+          "method" : "-open:in:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{2670, 14}"
+        },
+        "-debug_process_session:" : {
+          "range" : "{60710, 114}",
+          "method" : "-debug_process_session:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{3727, 7}"
+        },
+        "-prepare_touchBar:" : {
+          "range" : "{14339, 533}",
+          "method" : "-prepare_touchBar:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{977, 37}"
+        },
+        "-open_caller:" : {
+          "range" : "{46645, 856}",
+          "method" : "-open_caller:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{2735, 45}"
+        },
+        "-sourceEditor_has_been_edited:" : {
+          "range" : "{25550, 599}",
+          "method" : "-sourceEditor_has_been_edited:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{1588, 29}"
+        },
+        "-analyse_genius_results:" : {
+          "range" : "{20967, 233}",
+          "method" : "-analyse_genius_results:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{1313, 14}"
+        },
+        "-center_point_of_editor:" : {
+          "range" : "{50265, 879}",
+          "method" : "-center_point_of_editor:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{2951, 34}"
+        },
+        "-debug_log" : {
+          "range" : "{60828, 5192}",
+          "method" : "-debug_log",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{3737, 144}"
+        },
+        "-bracket_recursive_for:" : {
+          "range" : "{31809, 1019}",
+          "method" : "-bracket_recursive_for:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{2042, 50}"
+        },
+        "-open:range:" : {
+          "range" : "{51188, 80}",
+          "method" : "-open:range:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{3010, 7}"
+        },
+        "-consume_editor_insets:" : {
+          "range" : "{26905, 1565}",
+          "method" : "-consume_editor_insets:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{1680, 69}"
+        },
+        "-process_debug_infos:" : {
+          "range" : "{66023, 523}",
+          "method" : "-process_debug_infos:",
+          "class" : "XcodeMapPlugin",
+          "special" : 1,
+          "lines" : "{3883, 26}"
+        }
+      }
+    }
+  },
+  "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Playground\/AppDelegate.m" : {
+    ".lines" : {
+      "       8" : {
+        "class" : "AppDelegate",
+        "method" : "-application:didFinishLaunchingWithOptions:",
+        "lines" : "{8, 9}"
+      }
+    },
+    ".classes" : {
+      "AppDelegate" : {
+        "-application:didFinishLaunchingWithOptions:" : {
+          "range" : "{58, 262}",
+          "method" : "-application:didFinishLaunchingWithOptions:",
+          "class" : "AppDelegate",
+          "special" : 1,
+          "lines" : "{8, 9}"
+        }
+      }
+    }
+  },
+  "file:\/\/\/Users\/vincent\/Downloads\/Xcode%20tests\/Console\/Console\/AppDelegate.m" : {
+    ".lines" : {
+      "      71" : {
+        "class" : "AppDelegate",
+        "method" : "-action_tap:",
+        "lines" : "{71, 8}"
+      },
+      "      50" : {
+        "class" : "AppDelegate",
+        "method" : "-add_statusBar",
+        "lines" : "{50, 16}"
+      },
+      "      32" : {
+        "class" : "AppDelegate",
+        "method" : "-applicationDidFinishLaunching:",
+        "lines" : "{32, 9}"
+      },
+      "      85" : {
+        "class" : "AppDelegate",
+        "method" : "-setMenuIcon:",
+        "lines" : "{85, 25}"
+      }
+    },
+    ".classes" : {
+      "AppDelegate" : {
+        "-action_tap:" : {
+          "range" : "{1118, 198}",
+          "method" : "-action_tap:",
+          "class" : "AppDelegate",
+          "special" : 1,
+          "lines" : "{71, 8}"
+        },
+        "-applicationDidFinishLaunching:" : {
+          "range" : "{448, 243}",
+          "method" : "-applicationDidFinishLaunching:",
+          "class" : "AppDelegate",
+          "special" : 1,
+          "lines" : "{32, 9}"
+        },
+        "-add_statusBar" : {
+          "range" : "{701, 411}",
+          "method" : "-add_statusBar",
+          "class" : "AppDelegate",
+          "special" : 1,
+          "lines" : "{50, 16}"
+        },
+        "-setMenuIcon:" : {
+          "range" : "{1323, 712}",
+          "method" : "-setMenuIcon:",
+          "class" : "AppDelegate",
+          "special" : 1,
+          "lines" : "{85, 25}"
+        }
+      }
+    }
+  },
+  "file:\/\/\/Users\/vincent\/Downloads\/Xcode%20tests\/Console\/Console\/Message.m" : {
+    ".lines" : {
+      "     182" : {
+        "class" : "Message",
+        "method" : "-make_attributed",
+        "lines" : "{182, 166}"
+      },
+      "     355" : {
+        "class" : "Message",
+        "method" : "-contains:",
+        "lines" : "{355, 6}"
+      },
+      "      91" : {
+        "class" : "Message",
+        "method" : "+messagesWithJsonString:",
+        "lines" : "{91, 28}"
+      },
+      "     128" : {
+        "class" : "Message",
+        "method" : "+initWithDictionary:",
+        "lines" : "{128, 45}"
+      },
+      "      31" : {
+        "class" : "Message",
+        "method" : "+load",
+        "lines" : "{31, 21}"
+      },
+      "      60" : {
+        "class" : "Message",
+        "method" : "+messageWithJsonString:",
+        "lines" : "{60, 20}"
+      }
+    },
+    ".classes" : {
+      "color_green" : {
+
+      },
+      "color_red" : {
+
+      },
+      "color_orange" : {
+
+      },
+      "Message" : {
+        "+load" : {
+          "range" : "{627, 429}",
+          "method" : "+load",
+          "class" : "Message",
+          "special" : 1,
+          "lines" : "{31, 21}"
+        },
+        "+initWithDictionary:" : {
+          "range" : "{2295, 854}",
+          "method" : "+initWithDictionary:",
+          "class" : "Message",
+          "special" : 1,
+          "lines" : "{128, 45}"
+        },
+        "-contains:" : {
+          "range" : "{8023, 101}",
+          "method" : "-contains:",
+          "class" : "Message",
+          "special" : 1,
+          "lines" : "{355, 6}"
+        },
+        "+messageWithJsonString:" : {
+          "range" : "{1065, 527}",
+          "method" : "+messageWithJsonString:",
+          "class" : "Message",
+          "special" : 1,
+          "lines" : "{60, 20}"
+        },
+        "+messagesWithJsonString:" : {
+          "range" : "{1604, 681}",
+          "method" : "+messagesWithJsonString:",
+          "class" : "Message",
+          "special" : 1,
+          "lines" : "{91, 28}"
+        },
+        "-make_attributed" : {
+          "range" : "{3159, 4856}",
+          "method" : "-make_attributed",
+          "class" : "Message",
+          "special" : 1,
+          "lines" : "{182, 166}"
+        }
+      },
+      "rgb" : {
+
+      },
+      "color_white" : {
+
+      },
+      "color_yellow" : {
+
+      },
+      "rgba" : {
+
+      },
+      "color_blue" : {
+
+      },
+      "c255" : {
+
+      },
+      "color_purple" : {
+
+      },
+      "color_black" : {
+
+      },
+      "color_grey" : {
+
+      }
+    }
+  },
+  "file:\/\/\/Users\/vincent\/Downloads\/Github%20forks\/InjectionIII\/InjectionIII\/ScriptsCommand.m" : {
+    ".lines" : {
+      "      10" : {
+        "class" : "ScriptsCommand",
+        "method" : "-performDefaultImplementation",
+        "lines" : "{10, 10}"
+      }
+    },
+    ".classes" : {
+      "ScriptsCommand" : {
+        "-performDefaultImplementation" : {
+          "range" : "{89, 223}",
+          "method" : "-performDefaultImplementation",
+          "class" : "ScriptsCommand",
+          "special" : 1,
+          "lines" : "{10, 10}"
+        }
+      }
+    }
+  },
+  "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Classes\/Console\/ALLogManager.m" : {
+    ".lines" : {
+      "     164" : {
+        "class" : "ALLogManager",
+        "method" : "+colorize_in:end:text:",
+        "lines" : "{164, 14}"
+      },
+      "     124" : {
+        "class" : "ALLogManager",
+        "method" : "+socket_pouet",
+        "lines" : "{124, 24}"
+      },
+      "     180" : {
+        "class" : "ALLogManager",
+        "method" : "+colorize_bg_in:end:text:",
+        "lines" : "{180, 15}"
+      },
+      "      85" : {
+        "class" : "ALLogManager",
+        "method" : "+addConsole",
+        "lines" : "{85, 17}"
+      },
+      "     110" : {
+        "class" : "ALLogManager",
+        "method" : "+removeLogger:",
+        "lines" : "{110, 3}"
+      },
+      "      80" : {
+        "class" : "ALLogManager",
+        "method" : "+removeConsole",
+        "lines" : "{80, 4}"
+      },
+      "     105" : {
+        "class" : "ALLogManager",
+        "method" : "+addLogger:",
+        "lines" : "{105, 4}"
+      }
+    },
+    ".classes" : {
+      "IF_TYPE_MATCHES_INTERPRET_WITH" : {
+
+      },
+      "FORMAT_OBJ_WITH_ARGS" : {
+
+      },
+      "VTPGStringFromFourCharCodeOrUnsignedInt32" : {
+
+      },
+      "SOCKET_KEY" : {
+
+      },
+      "TypeCodeIsCharArray" : {
+
+      },
+      "IF_TYPE_MATCHES_INTERPRET_WITH_FORMAT" : {
+
+      },
+      "ALLogManager" : {
+        "+removeConsole" : {
+          "range" : "{1286, 84}",
+          "method" : "+removeConsole",
+          "class" : "ALLogManager",
+          "special" : 1,
+          "lines" : "{80, 4}"
+        },
+        "+colorize_in:end:text:" : {
+          "range" : "{2784, 331}",
+          "method" : "+colorize_in:end:text:",
+          "class" : "ALLogManager",
+          "special" : 1,
+          "lines" : "{164, 14}"
+        },
+        "+addConsole" : {
+          "range" : "{1372, 440}",
+          "method" : "+addConsole",
+          "class" : "ALLogManager",
+          "special" : 1,
+          "lines" : "{85, 17}"
+        },
+        "+addLogger:" : {
+          "range" : "{1816, 114}",
+          "method" : "+addLogger:",
+          "class" : "ALLogManager",
+          "special" : 1,
+          "lines" : "{105, 4}"
+        },
+        "+colorize_bg_in:end:text:" : {
+          "range" : "{3118, 374}",
+          "method" : "+colorize_bg_in:end:text:",
+          "class" : "ALLogManager",
+          "special" : 1,
+          "lines" : "{180, 15}"
+        },
+        "+removeLogger:" : {
+          "range" : "{1932, 92}",
+          "method" : "+removeLogger:",
+          "class" : "ALLogManager",
+          "special" : 1,
+          "lines" : "{110, 3}"
+        },
+        "+socket_pouet" : {
+          "range" : "{2036, 731}",
+          "method" : "+socket_pouet",
+          "class" : "ALLogManager",
+          "special" : 1,
+          "lines" : "{124, 24}"
+        }
+      },
+      "StringFromNSDecimalWithCurrentLocal" : {
+
+      },
+      "LOG_LEVEL_DEF" : {
+
+      },
+      "stringValueOf" : {
+
+      },
+      "SOCKET_ADDRESS" : {
+
+      },
+      "VTPGStringFromBoolOrCharValue" : {
+
+      }
+    }
+  },
+  "file:\/\/\/Users\/vincent\/MEGA\/Dev\/ALKit\/Sources\/Classes\/Core\/Categories\/UIViewController\/UIViewController+ALCategories.m" : {
+    ".lines" : {
+
+    },
+    ".classes" : {
+
+    }
+  },
+  "file:\/\/\/Users\/vincent\/Downloads\/Xcode%20tests\/Console\/Console\/Tools\/INDSequentialTextSelectionManager.m" : {
+    ".lines" : {
+      "     221" : {
+        "class" : "INDTextViewMetadata",
+        "method" : "-initWithTextView:transformationBlock:",
+        "lines" : "{221, 8}"
+      },
+      "     562" : {
+        "class" : "INDSequentialTextSelectionManager",
+        "method" : "-registerTextView:withUniqueIdentifier:transformationBlock:",
+        "lines" : "{562, 18}"
+      },
+      "     245" : {
+        "class" : "INDSequentialTextSelectionManager",
+        "method" : "-init",
+        "lines" : "{245, 9}"
+      },
+      "     331" : {
+        "class" : "INDSequentialTextSelectionManager",
+        "method" : "-handleRightMouseDown:",
+        "lines" : "{331, 12}"
+      },
+      "     199" : {
+        "class" : "INDTextViewSelectionSession",
+        "method" : "-addSelectionRange:",
+        "lines" : "{199, 5}"
+      },
+      "     433" : {
+        "class" : "INDSequentialTextSelectionManager",
+        "method" : "-resignFirstResponder",
+        "lines" : "{433, 6}"
+      },
+      "     449" : {
+        "class" : "INDSequentialTextSelectionManager",
+        "method" : "-setSelectionRangeForTextView:withRange:",
+        "lines" : "{449, 11}"
+      },
+      "     188" : {
+        "class" : "INDTextViewSelectionSession",
+        "method" : "-initWithTextView:event:",
+        "lines" : "{188, 10}"
+      },
+      "     344" : {
+        "class" : "INDSequentialTextSelectionManager",
+        "method" : "-addLocalEventMonitor",
+        "lines" : "{344, 17}"
+      },
+      "     180" : {
+        "class" : "INDTextViewSelectionSession",
+        "method" : "-removeSelectionRangeForTextView:",
+        "lines" : "{180, 1}"
+      },
+      "     392" : {
+        "class" : "INDSequentialTextSelectionManager",
+        "method" : "-buildSharingMenu",
+        "lines" : "{392, 12}"
+      },
+      "      55" : {
+        "class" : "INDAttributeRange",
+        "method" : "-initWithAttribute:value:range:",
+        "lines" : "{55, 1}"
+      },
+      "     424" : {
+        "class" : "INDSequentialTextSelectionManager",
+        "method" : "-rehighlightSelectedRangesAsActive:",
+        "lines" : "{424, 8}"
+      },
+      "     362" : {
+        "class" : "INDSequentialTextSelectionManager",
+        "method" : "-validTextViewForEvent:",
+        "lines" : "{362, 12}"
+      },
+      "     440" : {
+        "class" : "INDSequentialTextSelectionManager",
+        "method" : "-becomeFirstResponder",
+        "lines" : "{440, 6}"
+      },
+      "     303" : {
+        "class" : "INDSequentialTextSelectionManager",
+        "method" : "-handleLeftMouseDragged:",
+        "lines" : "{303, 27}"
+      },
+      "     405" : {
+        "class" : "INDSequentialTextSelectionManager",
+        "method" : "-menuForEvent:",
+        "lines" : "{405, 12}"
+      },
+      "     179" : {
+        "class" : "INDTextViewSelectionSession",
+        "method" : "-addSelectionRange:",
+        "lines" : "{179, 1}"
+      },
+      "     257" : {
+        "class" : "INDSequentialTextSelectionManager",
+        "method" : "-dealloc",
+        "lines" : "{257, 4}"
+      },
+      "      60" : {
+        "class" : "INDAttributeRange",
+        "method" : "-initWithAttribute:value:range:",
+        "lines" : "{60, 9}"
+      },
+      "     523" : {
+        "class" : "INDSequentialTextSelectionManager",
+        "method" : "-buildAttributedStringForCurrentSession",
+        "lines" : "{523, 31}"
+      },
+      "     601" : {
+        "class" : "INDSequentialTextSelectionManager",
+        "method" : "-sortTextViews",
+        "lines" : "{601, 4}"
+      },
+      "     281" : {
+        "class" : "INDSequentialTextSelectionManager",
+        "method" : "-handleLeftMouseUp:",
+        "lines" : "{281, 21}"
+      },
+      "     461" : {
+        "class" : "INDSequentialTextSelectionManager",
+        "method" : "-processCompleteSelectionsForTargetTextView:affinity:",
+        "lines" : "{461, 50}"
+      },
+      "     418" : {
+        "class" : "INDSequentialTextSelectionManager",
+        "method" : "-share:",
+        "lines" : "{418, 5}"
+      },
+      "     606" : {
+        "class" : "INDSequentialTextSelectionManager",
+        "method" : "-unregisterTextView:",
+        "lines" : "{606, 9}"
+      },
+      "     512" : {
+        "class" : "INDSequentialTextSelectionManager",
+        "method" : "-endSession",
+        "lines" : "{512, 8}"
+      },
+      "     157" : {
+        "class" : "INDTextViewSelectionRange",
+        "method" : "-initWithTextView:selectedRange:",
+        "lines" : "{157, 1}"
+      },
+      "     216" : {
+        "class" : "INDTextViewMetadata",
+        "method" : "-initWithTextView:transformationBlock:",
+        "lines" : "{216, 1}"
+      },
+      "     377" : {
+        "class" : "INDSequentialTextSelectionManager",
+        "method" : "-cachedAttributedText",
+        "lines" : "{377, 7}"
+      },
+      "     385" : {
+        "class" : "INDSequentialTextSelectionManager",
+        "method" : "-copy:",
+        "lines" : "{385, 6}"
+      },
+      "     557" : {
+        "class" : "INDSequentialTextSelectionManager",
+        "method" : "-registerTextView:withUniqueIdentifier:",
+        "lines" : "{557, 4}"
+      },
+      "     162" : {
+        "class" : "INDTextViewSelectionRange",
+        "method" : "-initWithTextView:selectedRange:",
+        "lines" : "{162, 9}"
+      },
+      "     264" : {
+        "class" : "INDSequentialTextSelectionManager",
+        "method" : "-handleLeftMouseDown:",
+        "lines" : "{264, 16}"
+      },
+      "     205" : {
+        "class" : "INDTextViewSelectionSession",
+        "method" : "-removeSelectionRangeForTextView:",
+        "lines" : "{205, 5}"
+      },
+      "     581" : {
+        "class" : "INDSequentialTextSelectionManager",
+        "method" : "-textViewComparator",
+        "lines" : "{581, 19}"
+      },
+      "     616" : {
+        "class" : "INDSequentialTextSelectionManager",
+        "method" : "-unregisterAllTextViews",
+        "lines" : "{616, 5}"
+      }
+    },
+    ".classes" : {
+      "IND_DISABLED_SELECTED_TEXT_BG_COLOR" : {
+
+      },
+      "INDTextViewSelectionSession" : {
+        "-addSelectionRange:" : {
+          "range" : "{6529, 163}",
+          "method" : "-addSelectionRange:",
+          "class" : "INDTextViewSelectionSession",
+          "special" : 1,
+          "lines" : "{199, 5}"
+        },
+        "-removeSelectionRangeForTextView:" : {
+          "range" : "{6694, 187}",
+          "method" : "-removeSelectionRangeForTextView:",
+          "class" : "INDTextViewSelectionSession",
+          "special" : 1,
+          "lines" : "{205, 5}"
+        },
+        "-initWithTextView:event:" : {
+          "range" : "{6178, 349}",
+          "method" : "-initWithTextView:event:",
+          "class" : "INDTextViewSelectionSession",
+          "special" : 1,
+          "lines" : "{188, 10}"
+        }
+      },
+      "INDTextViewMetadata" : {
+        "-initWithTextView:transformationBlock:" : {
+          "range" : "{7257, 251}",
+          "method" : "-initWithTextView:transformationBlock:",
+          "class" : "INDTextViewMetadata",
+          "special" : 1,
+          "lines" : "{221, 8}"
+        }
+      },
+      "INDTextViewSelectionRange" : {
+        "-initWithTextView:selectedRange:" : {
+          "range" : "{5298, 296}",
+          "method" : "-initWithTextView:selectedRange:",
+          "class" : "INDTextViewSelectionRange",
+          "special" : 1,
+          "lines" : "{162, 9}"
+        }
+      },
+      "INDAttributeRange" : {
+        "-initWithAttribute:value:range:" : {
+          "range" : "{1781, 202}",
+          "method" : "-initWithAttribute:value:range:",
+          "class" : "INDAttributeRange",
+          "special" : 1,
+          "lines" : "{60, 9}"
+        }
+      },
+      "INDCharacterIndexForTextViewEvent" : {
+
+      },
+      "INDSequentialTextSelectionManager" : {
+        "-sortTextViews" : {
+          "range" : "{19698, 94}",
+          "method" : "-sortTextViews",
+          "class" : "INDSequentialTextSelectionManager",
+          "special" : 1,
+          "lines" : "{601, 4}"
+        },
+        "-buildAttributedStringForCurrentSession" : {
+          "range" : "{16867, 1382}",
+          "method" : "-buildAttributedStringForCurrentSession",
+          "class" : "INDSequentialTextSelectionManager",
+          "special" : 1,
+          "lines" : "{523, 31}"
+        },
+        "-copy:" : {
+          "range" : "{12540, 161}",
+          "method" : "-copy:",
+          "class" : "INDSequentialTextSelectionManager",
+          "special" : 1,
+          "lines" : "{385, 6}"
+        },
+        "-endSession" : {
+          "range" : "{16647, 197}",
+          "method" : "-endSession",
+          "class" : "INDSequentialTextSelectionManager",
+          "special" : 1,
+          "lines" : "{512, 8}"
+        },
+        "-resignFirstResponder" : {
+          "range" : "{14154, 118}",
+          "method" : "-resignFirstResponder",
+          "class" : "INDSequentialTextSelectionManager",
+          "special" : 1,
+          "lines" : "{433, 6}"
+        },
+        "-setSelectionRangeForTextView:withRange:" : {
+          "range" : "{14422, 515}",
+          "method" : "-setSelectionRangeForTextView:withRange:",
+          "class" : "INDSequentialTextSelectionManager",
+          "special" : 1,
+          "lines" : "{449, 11}"
+        },
+        "-processCompleteSelectionsForTargetTextView:affinity:" : {
+          "range" : "{14939, 1706}",
+          "method" : "-processCompleteSelectionsForTargetTextView:affinity:",
+          "class" : "INDSequentialTextSelectionManager",
+          "special" : 1,
+          "lines" : "{461, 50}"
+        },
+        "-becomeFirstResponder" : {
+          "range" : "{14274, 120}",
+          "method" : "-becomeFirstResponder",
+          "class" : "INDSequentialTextSelectionManager",
+          "special" : 1,
+          "lines" : "{440, 6}"
+        },
+        "-dealloc" : {
+          "range" : "{8311, 59}",
+          "method" : "-dealloc",
+          "class" : "INDSequentialTextSelectionManager",
+          "special" : 1,
+          "lines" : "{257, 4}"
+        },
+        "-rehighlightSelectedRangesAsActive:" : {
+          "range" : "{13819, 333}",
+          "method" : "-rehighlightSelectedRangesAsActive:",
+          "class" : "INDSequentialTextSelectionManager",
+          "special" : 1,
+          "lines" : "{424, 8}"
+        },
+        "-handleLeftMouseDragged:" : {
+          "range" : "{9643, 1217}",
+          "method" : "-handleLeftMouseDragged:",
+          "class" : "INDSequentialTextSelectionManager",
+          "special" : 1,
+          "lines" : "{303, 27}"
+        },
+        "-addLocalEventMonitor" : {
+          "range" : "{11211, 612}",
+          "method" : "-addLocalEventMonitor",
+          "class" : "INDSequentialTextSelectionManager",
+          "special" : 1,
+          "lines" : "{344, 17}"
+        },
+        "-handleLeftMouseUp:" : {
+          "range" : "{8941, 700}",
+          "method" : "-handleLeftMouseUp:",
+          "class" : "INDSequentialTextSelectionManager",
+          "special" : 1,
+          "lines" : "{281, 21}"
+        },
+        "-unregisterTextView:" : {
+          "range" : "{19794, 282}",
+          "method" : "-unregisterTextView:",
+          "class" : "INDSequentialTextSelectionManager",
+          "special" : 1,
+          "lines" : "{606, 9}"
+        },
+        "-textViewComparator" : {
+          "range" : "{19184, 512}",
+          "method" : "-textViewComparator",
+          "class" : "INDSequentialTextSelectionManager",
+          "special" : 1,
+          "lines" : "{581, 19}"
+        },
+        "-handleLeftMouseDown:" : {
+          "range" : "{8395, 544}",
+          "method" : "-handleLeftMouseDown:",
+          "class" : "INDSequentialTextSelectionManager",
+          "special" : 1,
+          "lines" : "{264, 16}"
+        },
+        "-validTextViewForEvent:" : {
+          "range" : "{11825, 491}",
+          "method" : "-validTextViewForEvent:",
+          "class" : "INDSequentialTextSelectionManager",
+          "special" : 1,
+          "lines" : "{362, 12}"
+        },
+        "-init" : {
+          "range" : "{8073, 212}",
+          "method" : "-init",
+          "class" : "INDSequentialTextSelectionManager",
+          "special" : 1,
+          "lines" : "{245, 9}"
+        },
+        "-cachedAttributedText" : {
+          "range" : "{12346, 192}",
+          "method" : "-cachedAttributedText",
+          "class" : "INDSequentialTextSelectionManager",
+          "special" : 1,
+          "lines" : "{377, 7}"
+        },
+        "-buildSharingMenu" : {
+          "range" : "{12703, 477}",
+          "method" : "-buildSharingMenu",
+          "class" : "INDSequentialTextSelectionManager",
+          "special" : 1,
+          "lines" : "{392, 12}"
+        },
+        "-handleRightMouseDown:" : {
+          "range" : "{10862, 347}",
+          "method" : "-handleRightMouseDown:",
+          "class" : "INDSequentialTextSelectionManager",
+          "special" : 1,
+          "lines" : "{331, 12}"
+        },
+        "-unregisterAllTextViews" : {
+          "range" : "{20078, 112}",
+          "method" : "-unregisterAllTextViews",
+          "class" : "INDSequentialTextSelectionManager",
+          "special" : 1,
+          "lines" : "{616, 5}"
+        },
+        "-share:" : {
+          "range" : "{13670, 147}",
+          "method" : "-share:",
+          "class" : "INDSequentialTextSelectionManager",
+          "special" : 1,
+          "lines" : "{418, 5}"
+        },
+        "-registerTextView:withUniqueIdentifier:" : {
+          "range" : "{18280, 186}",
+          "method" : "-registerTextView:withUniqueIdentifier:",
+          "class" : "INDSequentialTextSelectionManager",
+          "special" : 1,
+          "lines" : "{557, 4}"
+        },
+        "-registerTextView:withUniqueIdentifier:transformationBlock:" : {
+          "range" : "{18468, 714}",
+          "method" : "-registerTextView:withUniqueIdentifier:transformationBlock:",
+          "class" : "INDSequentialTextSelectionManager",
+          "special" : 1,
+          "lines" : "{562, 18}"
+        },
+        "-menuForEvent:" : {
+          "range" : "{13182, 486}",
+          "method" : "-menuForEvent:",
+          "class" : "INDSequentialTextSelectionManager",
+          "special" : 1,
+          "lines" : "{405, 12}"
+        }
+      },
+      "INDForwardRangeForIndices" : {
+
+      }
+    }
+  }
+}

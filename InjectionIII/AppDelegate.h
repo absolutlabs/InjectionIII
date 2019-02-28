@@ -18,6 +18,8 @@
 - (void)setMenuIcon:(NSString *)tiffName;
 - (IBAction)openProject:sender;
 
+- (IBAction)autoInject:(NSMenuItem *)sender;
+
 @end
 
 extern AppDelegate *appDelegate;

@@ -19,12 +19,14 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.2</string>
 	<key>CFBundleVersion</key>
-	<string>1190</string>
+	<string>1281</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.developer-tools</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
 	<key>LSUIElement</key>
+	<true/>
+	<key>NSAppleScriptEnabled</key>
 	<true/>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2017-8 John Holdsworth. All rights reserved.</string>
@@ -32,6 +34,8 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>OSAScriptingDefinition</key>
+	<string>scripts.sdef</string>
 	<key>SMPrivilegedExecutables</key>
 	<dict>
 		<key>com.johnholdsworth.InjectionIII.Helper</key>
