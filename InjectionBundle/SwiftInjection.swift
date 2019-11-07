@@ -5,7 +5,7 @@
 //  Created by John Holdsworth on 05/11/2017.
 //  Copyright © 2017 John Holdsworth. All rights reserved.
 //
-//  $Id: //depot/ResidentEval/InjectionBundle/SwiftInjection.swift#48 $
+//  $Id: //depot/ResidentEval/InjectionBundle/SwiftInjection.swift#56 $
 //
 //  Cut-down version of code injection in Swift. Uses code
 //  from SwiftEval.swift to recompile and reload class.
@@ -115,8 +115,12 @@ public class SwiftInjection: NSObject {
             let classMetadata = unsafeBitCast(newClass, to: UnsafeMutablePointer<ClassMetadataSwift>.self)
 
             // Is this a Swift class?
-            if (classMetadata.pointee.Data & 0x1) == 1 {
-                // Swift equivalent of Swizzling
+            // Reference: https://github.com/apple/swift/blob/master/include/swift/ABI/Metadata.h#L1195
+            let oldSwiftCondition = classMetadata.pointee.Data & 0x1 == 1
+            let newSwiftCondition = classMetadata.pointee.Data & 0x3 != 0
+            let isSwiftClass = newSwiftCondition || oldSwiftCondition
+            if isSwiftClass {
+              // Swift equivalent of Swizzling
                 if classMetadata.pointee.ClassSize != existingClass.pointee.ClassSize {
                     print("💉 ⚠️ Adding or removing methods on Swift classes is not supported. Your application will likely crash. ⚠️")
                 }
@@ -129,7 +133,7 @@ public class SwiftInjection: NSObject {
                 let vtableLength = Int(existingClass.pointee.ClassSize -
                     existingClass.pointee.ClassAddressPoint) - vtableOffset
 
-                print("💉 Injected '\(NSStringFromClass(oldClass))'")
+                print("💉 Injected '\(oldClass)'")
                 memcpy(byteAddr(existingClass) + vtableOffset,
                        byteAddr(classMetadata) + vtableOffset, vtableLength)
             }
@@ -156,12 +160,18 @@ public class SwiftInjection: NSObject {
                     }
                     testQueue.resume()
                 })
-                RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
+                RunLoop.main.add(timer, forMode: RunLoop.Mode.common)
             }
         } else {
             var injectedClasses = [AnyClass]()
+            let injectedSEL = #selector(SwiftInjected.injected)
+            typealias ClassIMP = @convention(c) (AnyClass, Selector) -> ()
             for cls in oldClasses {
-                if class_getInstanceMethod(cls, #selector(SwiftInjected.injected)) != nil {
+                if let classMethod = class_getClassMethod(cls, injectedSEL) {
+                    let classIMP = method_getImplementation(classMethod)
+                    unsafeBitCast(classIMP, to: ClassIMP.self)(cls, injectedSEL)
+                }
+                if class_getInstanceMethod(cls, injectedSEL) != nil {
                     injectedClasses.append(cls)
                     let kvoName = "NSKVONotifying_" + NSStringFromClass(cls)
                     if let kvoCls = NSClassFromString(kvoName) {
@@ -220,7 +230,7 @@ public class SwiftInjection: NSObject {
             vc.view.addSubview(v)
             UIView.animate(withDuration: 0.2,
                            delay: 0.0,
-                           options: UIViewAnimationOptions.curveEaseIn,
+                           options: UIView.AnimationOptions.curveEaseIn,
                            animations: {
                             v.alpha = 0.0
             }, completion: { _ in v.removeFromSuperview() })
@@ -281,6 +291,8 @@ class SwiftSweeper {
                 }
             case .tuple, .struct:
                 sweepMembers(value)
+            @unknown default:
+                break
             }
         }
     }

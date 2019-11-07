@@ -11,7 +11,8 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
-@property (weak) IBOutlet NSMenuItem *enableWatcher;
+@property (weak) IBOutlet NSMenuItem *enableWatcher, *traceItem;
+@property NSMutableSet<NSString *> *watchedDirectories;
 @property (weak) InjectionServer *lastConnection;
 @property NSString *selectedProject;
 

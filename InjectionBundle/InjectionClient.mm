@@ -103,9 +103,12 @@ static struct {
     // connect to InjetionIII.app using sicket
     if (InjectionClient *client = [self connectTo:INJECTION_ADDRESS])
         [client run];
-    else
+    else {
         printf("💉 Injection loaded but could not connect. Is InjectionIII.app running?\n");
-
+#ifndef __IPHONE_OS_VERSION_MIN_REQUIRED
+        printf("⚠️ For a macOS app you need to turn off the sandbox to connect. ⚠️\n");
+#endif
+    }
 }
 
 - (void)runInBackground {
@@ -148,12 +151,16 @@ static struct {
             }
             break;
         }
-        case InjectionProject: {
+        case InjectionConnected: {
             NSString *projectFile = [self readString];
             [SwiftEval sharedInstance].projectFile = projectFile;
             [SwiftEval sharedInstance].derivedLogs = nil;
-            printf("💉 Injection connected, watching %s/**\n",
-                   projectFile.stringByDeletingLastPathComponent.UTF8String);
+            printf("💉 Injection connected 👍\n");
+            break;
+        }
+        case InjectionWatching: {
+            NSString *directory = [self readString];
+            printf("💉 Watching %s/**\n", directory.UTF8String);
             break;
         }
         case InjectionLog:
@@ -161,6 +168,19 @@ static struct {
             break;
         case InjectionSigned:
             [writer writeString:[self readString]];
+            break;
+        case InjectionTrace: {
+            void *handle = dlopen(NULL, RTLD_NOW);
+            void *main = dlsym(handle ?: RTLD_DEFAULT, "main");
+            Dl_info info;
+            if (main && dladdr(main, &info) && info.dli_fname) {
+                [SwiftTrace traceWithBundlePath:(int8_t *)info.dli_fname];
+                printf("💉 Tracing class' methods in: %s\n", info.dli_fname);
+            }
+            break;
+        }
+        case InjectionUntrace:
+            [SwiftTrace removeAllPatches];
             break;
         default: {
             NSString *changed = [self readString];

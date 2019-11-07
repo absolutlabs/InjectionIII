@@ -26,7 +26,7 @@ static NSMutableDictionary *projectInjected = [NSMutableDictionary new];
 
 @implementation InjectionServer {
     void (^injector)(NSArray *changed);
-    FileWatcher *fileWatcher;
+    NSMutableArray<FileWatcher *> *fileWatchers;
     NSMutableArray *pending;
 }
 
@@ -49,12 +49,12 @@ static NSMutableDictionary *projectInjected = [NSMutableDictionary new];
     NSString *projectFile = appDelegate.selectedProject;
     static BOOL MAS = false;
 
-    if (!projectFile) {
-        XcodeApplication *xcode = (XcodeApplication *)[SBApplication
-                           applicationWithBundleIdentifier:XcodeBundleID];
-        XcodeWorkspaceDocument *workspace = [xcode activeWorkspaceDocument];
-        projectFile = workspace.file.path;
-    }
+//    if (!projectFile) {
+//        XcodeApplication *xcode = (XcodeApplication *)[SBApplication
+//                           applicationWithBundleIdentifier:XcodeBundleID];
+//        XcodeWorkspaceDocument *workspace = [xcode activeWorkspaceDocument];
+//        projectFile = workspace.file.path;
+//    }
 
     if (!projectFile) {
         dispatch_sync(dispatch_get_main_queue(), ^{
@@ -225,8 +225,16 @@ static NSMutableDictionary *projectInjected = [NSMutableDictionary new];
 
     // client app disconnected
     injector = nil;
-    fileWatcher = nil;
+    fileWatchers = nil;
     [appDelegate setMenuIcon:@"InjectionIdle"];
+    [appDelegate.traceItem setState:NSOffState];
+}
+
+- (void)watchDirectory:(NSString *)directory {
+    [fileWatchers addObject:[[FileWatcher alloc]
+                             initWithRoot:directory
+                             plugin:injector]];
+    [self writeCommand:InjectionWatching withString:directory];
 }
 
 - (void)injectPending {
@@ -239,11 +247,11 @@ static NSMutableDictionary *projectInjected = [NSMutableDictionary new];
 
 - (void)setProject:(NSString *)project {
     if (!injector) return;
-    [self writeCommand:InjectionProject withString:project];
     [self writeCommand:InjectionVaccineSettingChanged withString:[appDelegate vaccineConfiguration]];
-    fileWatcher = [[FileWatcher alloc]
-                   initWithRoot:project.stringByDeletingLastPathComponent
-                   plugin:injector];
+    fileWatchers = [NSMutableArray new];
+    [self writeCommand:InjectionConnected withString:project];
+    for (NSString *directory in appDelegate.watchedDirectories)
+        [self watchDirectory:directory];
 }
 
 + (NSArray *)searchForTestWithFile:(NSString *)injectedFile projectRoot:(NSString *)projectRoot fileManager:(NSFileManager *)fileManager;

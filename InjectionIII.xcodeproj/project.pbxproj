@@ -10,6 +10,9 @@
 		BB439B801FABA64300B4F50B /* SwiftEvalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB439B7F1FABA64300B4F50B /* SwiftEvalTests.swift */; };
 		BB56393C1FD5C25A002FFCEF /* SignerService.m in Sources */ = {isa = PBXBuildFile; fileRef = BB67DBB61FB0D0F2000EAC8A /* SignerService.m */; };
 		BB6306FE1FCD1A410021D30C /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = BB6306FD1FCD1A410021D30C /* Credits.rtf */; };
+		BB76EA0822929E1100E454F0 /* SwiftTrace.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB76EA0522929E1100E454F0 /* SwiftTrace.mm */; };
+		BB76EA0922929E1100E454F0 /* SwiftTrace.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB76EA0622929E1100E454F0 /* SwiftTrace.swift */; };
+		BB76EA0A22929E1100E454F0 /* xt_forwarding_trampoline_x64.s in Sources */ = {isa = PBXBuildFile; fileRef = BB76EA0722929E1100E454F0 /* xt_forwarding_trampoline_x64.s */; };
 		BB877CE42186EB6E0070EEC7 /* DDHotKeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6306F51FCD16600021D30C /* DDHotKeyCenter.m */; };
 		BB877CE52186EB6E0070EEC7 /* DDHotKeyUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6306F61FCD16600021D30C /* DDHotKeyUtilities.m */; };
 		BBB040641FB17A6C007DDD0A /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBB040631FB1798A007DDD0A /* ScriptingBridge.framework */; };
@@ -37,7 +40,7 @@
 		BBCA02071FB0F10300E45F0F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBCA02051FB0F10300E45F0F /* MainMenu.xib */; };
 		BBCA020A1FB0F10400E45F0F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCA02091FB0F10400E45F0F /* main.m */; };
 		BBCA022A1FB0F64800E45F0F /* SimpleSocket.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB67DBB31FB0CDA8000EAC8A /* SimpleSocket.mm */; };
-		BBCA024D1FB1069A00E45F0F /* macOSInjection10.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BBCA02451FB1065D00E45F0F /* macOSInjection10.bundle */; };
+		BBCA024D1FB1069A00E45F0F /* macOSInjection.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BBCA02451FB1065D00E45F0F /* macOSInjection.bundle */; };
 		BBCA02501FB107AF00E45F0F /* SwiftEval.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB439B8A1FABA65D00B4F50B /* SwiftEval.swift */; };
 		BBCA02511FB107AF00E45F0F /* SwiftInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB109FAF1FAECD92008C5218 /* SwiftInjection.swift */; };
 		BBCA02561FB1099500E45F0F /* InjectionServer.mm in Sources */ = {isa = PBXBuildFile; fileRef = BBCA02551FB1099500E45F0F /* InjectionServer.mm */; };
@@ -122,6 +125,11 @@
 		BB67DBB31FB0CDA8000EAC8A /* SimpleSocket.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SimpleSocket.mm; sourceTree = "<group>"; };
 		BB67DBB51FB0D0F2000EAC8A /* SignerService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignerService.h; sourceTree = "<group>"; };
 		BB67DBB61FB0D0F2000EAC8A /* SignerService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignerService.m; sourceTree = "<group>"; };
+		BB76EA0422929E0E00E454F0 /* SwiftTrace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwiftTrace.h; path = SwiftTrace/SwiftTrace/SwiftTrace.h; sourceTree = SOURCE_ROOT; };
+		BB76EA0522929E1100E454F0 /* SwiftTrace.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SwiftTrace.mm; path = SwiftTrace/SwiftTrace/SwiftTrace.mm; sourceTree = SOURCE_ROOT; };
+		BB76EA0622929E1100E454F0 /* SwiftTrace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftTrace.swift; path = SwiftTrace/SwiftTrace/SwiftTrace.swift; sourceTree = SOURCE_ROOT; };
+		BB76EA0722929E1100E454F0 /* xt_forwarding_trampoline_x64.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; name = xt_forwarding_trampoline_x64.s; path = SwiftTrace/SwiftTrace/xt_forwarding_trampoline_x64.s; sourceTree = SOURCE_ROOT; };
+		BBA7BE0223473D660067124D /* build_bundles.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = build_bundles.sh; sourceTree = "<group>"; };
 		BBB040631FB1798A007DDD0A /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/ScriptingBridge.framework; sourceTree = DEVELOPER_DIR; };
 		BBB148D91FAD53BE00CB6B33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBB148DB1FAD53BE00CB6B33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -153,7 +161,7 @@
 		BBCA02081FB0F10400E45F0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BBCA02091FB0F10400E45F0F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BBCA020B1FB0F10400E45F0F /* InjectionIII.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = InjectionIII.entitlements; sourceTree = "<group>"; };
-		BBCA02451FB1065D00E45F0F /* macOSInjection10.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = macOSInjection10.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBCA02451FB1065D00E45F0F /* macOSInjection.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = macOSInjection.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBCA02471FB1065D00E45F0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BBCA02541FB1099500E45F0F /* InjectionServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InjectionServer.h; sourceTree = "<group>"; };
 		BBCA02551FB1099500E45F0F /* InjectionServer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = InjectionServer.mm; sourceTree = "<group>"; };
@@ -229,7 +237,7 @@
 			children = (
 				BB439B7B1FABA64300B4F50B /* SwiftEvalTests.xctest */,
 				BBCA01FE1FB0F10300E45F0F /* InjectionIII.app */,
-				BBCA02451FB1065D00E45F0F /* macOSInjection10.bundle */,
+				BBCA02451FB1065D00E45F0F /* macOSInjection.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -345,6 +353,7 @@
 				BB6224441FC5B0E500AD7A3A /* HelperInstaller.m */,
 				BB6224421FC5B0E500AD7A3A /* HelperProxy.h */,
 				BB6224411FC5B0E300AD7A3A /* HelperProxy.m */,
+				BDB6A7CE21824C800001CF95 /* UserDefaults.h */,
 				BBCA02031FB0F10300E45F0F /* Assets.xcassets */,
 				BBCA025E1FB122C300E45F0F /* InjectionIdle.tif */,
 				BBCA025F1FB122C300E45F0F /* InjectionOK.tif */,
@@ -355,7 +364,7 @@
 				BBCA02581FB112F500E45F0F /* App.icns */,
 				BBCA02091FB0F10400E45F0F /* main.m */,
 				BBCA020B1FB0F10400E45F0F /* InjectionIII.entitlements */,
-				BDB6A7CE21824C800001CF95 /* UserDefaults.h */,
+				BBA7BE0223473D660067124D /* build_bundles.sh */,
 			);
 			path = InjectionIII;
 			sourceTree = "<group>";
@@ -370,6 +379,10 @@
 				BB109FAF1FAECD92008C5218 /* SwiftInjection.swift */,
 				BBB64FE41FD576AA0020BE47 /* XprobeSwift-Bridging-Header.h */,
 				BD35949D21A6C5DE0020EB94 /* Vaccine.swift */,
+				BB76EA0422929E0E00E454F0 /* SwiftTrace.h */,
+				BB76EA0522929E1100E454F0 /* SwiftTrace.mm */,
+				BB76EA0622929E1100E454F0 /* SwiftTrace.swift */,
+				BB76EA0722929E1100E454F0 /* xt_forwarding_trampoline_x64.s */,
 			);
 			path = InjectionBundle;
 			sourceTree = "<group>";
@@ -449,7 +462,6 @@
 				BBCA02411FB1065D00E45F0F /* Sources */,
 				BBCA02421FB1065D00E45F0F /* Frameworks */,
 				BBCA02431FB1065D00E45F0F /* Resources */,
-				BBE429591FD7D476009FBA8B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -457,7 +469,7 @@
 			);
 			name = InjectionBundle;
 			productName = InjectionBundle;
-			productReference = BBCA02451FB1065D00E45F0F /* macOSInjection10.bundle */;
+			productReference = BBCA02451FB1065D00E45F0F /* macOSInjection.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -477,6 +489,7 @@
 					};
 					BBCA01FD1FB0F10300E45F0F = {
 						CreatedOnToolsVersion = 9.0.1;
+						LastSwiftMigration = 1110;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
@@ -486,6 +499,7 @@
 					};
 					BBCA02441FB1065D00E45F0F = {
 						CreatedOnToolsVersion = 9.0.1;
+						LastSwiftMigration = 1110;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -534,7 +548,7 @@
 				BBB64DC51FD450AF0020BE47 /* README.md in Resources */,
 				BBE490DC1FB2C643003D41BB /* InjectionError.tif in Resources */,
 				BBCA02591FB112F500E45F0F /* App.icns in Resources */,
-				BBCA024D1FB1069A00E45F0F /* macOSInjection10.bundle in Resources */,
+				BBCA024D1FB1069A00E45F0F /* macOSInjection.bundle in Resources */,
 				BBCA02601FB122C300E45F0F /* InjectionIdle.tif in Resources */,
 				BB6306FE1FCD1A410021D30C /* Credits.rtf in Resources */,
 				BBCA02611FB122C300E45F0F /* InjectionOK.tif in Resources */,
@@ -578,22 +592,8 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "SYMROOT=/tmp/Injection10\nexport PLATFORM_DIR_OS=$DEVELOPER_DIR/Platforms/iPhoneSimulator.platform &&\n\"$DEVELOPER_BIN_DIR\"/xcodebuild SYMROOT=$SYMROOT PRODUCT_NAME=iOSInjection10 LD_RUNPATH_SEARCH_PATHS=\"$DEVELOPER_DIR/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator $PLATFORM_DIR_OS/Developer/Library/Frameworks @loader_path/Frameworks\" -arch x86_64 -sdk iphonesimulator -config Debug -target InjectionBundle &&\n/Applications/Xcode941.app/Contents/Developer/usr/bin/xcodebuild SYMROOT=/tmp/Injection PRODUCT_NAME=iOSInjection LD_RUNPATH_SEARCH_PATHS=\"$DEVELOPER_DIR/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator $PLATFORM_DIR_OS/Developer/Library/Frameworks @loader_path/Frameworks\" -arch x86_64 -sdk iphonesimulator -config Debug -target InjectionBundle &&\nrsync -au $SYMROOT/Debug-iphonesimulator/iOSInjection10.bundle /tmp/Injection/Debug-iphonesimulator/iOSInjection.bundle \"$CODESIGNING_FOLDER_PATH/Contents/Resources\" &&\nexport PLATFORM_DIR_OS=$DEVELOPER_DIR/Platforms/AppleTVSimulator.platform &&\n\"$DEVELOPER_BIN_DIR\"/xcodebuild SYMROOT=$SYMROOT PRODUCT_NAME=tvOSInjection10 LD_RUNPATH_SEARCH_PATHS=\"$DEVELOPER_DIR/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/appletvsimulator $PLATFORM_DIR_OS/Developer/Library/Frameworks @loader_path/Frameworks\" -arch x86_64 -sdk appletvsimulator -config Debug -target InjectionBundle &&\n/Applications/Xcode941.app/Contents/Developer/usr/bin/xcodebuild SYMROOT=/tmp/Injection PRODUCT_NAME=tvOSInjection LD_RUNPATH_SEARCH_PATHS=\"$DEVELOPER_DIR/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/appletvsimulator $PLATFORM_DIR_OS/Developer/Library/Frameworks @loader_path/Frameworks\" -arch x86_64 -sdk appletvsimulator -config Debug -target InjectionBundle &&\nrsync -au $SYMROOT/Debug-appletvsimulator/tvOSInjection10.bundle /tmp/Injection/Debug-appletvsimulator/tvOSInjection.bundle \"$CODESIGNING_FOLDER_PATH/Contents/Resources\" &&\nexport PLATFORM_DIR_OS=$DEVELOPER_DIR/Platforms/MacOS.platform &&\n/Applications/Xcode941.app/Contents/Developer/usr/bin/xcodebuild SYMROOT=/tmp/Injection PRODUCT_NAME=macOSInjection LD_RUNPATH_SEARCH_PATHS=\"$DEVELOPER_DIR/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator $PLATFORM_DIR_OS/Developer/Library/Frameworks @loader_path/Frameworks\" -arch x86_64 -config Debug -target InjectionBundle &&\nrsync -au /tmp/Injection/Debug/macOSInjection.bundle \"$CODESIGNING_FOLDER_PATH/Contents/Resources\" &&\nfind $CODESIGNING_FOLDER_PATH/Contents/Resources/*.bundle -name '*.h' -delete\n";
-			showEnvVarsInLog = 0;
-		};
-		BBE429591FD7D476009FBA8B /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#rsync -au --links \"${PLATFORM_DIR_OS:-$PLATFORM_DIR}/Developer/Library/Frameworks/XCTest.framework\" \"$CONFIGURATION_BUILD_DIR/$FRAMEWORKS_FOLDER_PATH\"";
+			shellPath = "/bin/sh -x";
+			shellScript = "InjectionIII/build_bundles.sh\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -632,11 +632,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBCA02501FB107AF00E45F0F /* SwiftEval.swift in Sources */,
+				BB76EA0822929E1100E454F0 /* SwiftTrace.mm in Sources */,
 				BD35949E21A6C5DE0020EB94 /* Vaccine.swift in Sources */,
 				BBCA02511FB107AF00E45F0F /* SwiftInjection.swift in Sources */,
+				BB76EA0A22929E1100E454F0 /* xt_forwarding_trampoline_x64.s in Sources */,
 				BBB64FE11FD575260020BE47 /* XprobeSwift.swift in Sources */,
 				BBB64FE61FD577EB0020BE47 /* SwiftSwizzler.swift in Sources */,
 				BBCA02621FB1312A00E45F0F /* SimpleSocket.mm in Sources */,
+				BB76EA0922929E1100E454F0 /* SwiftTrace.swift in Sources */,
 				BBCA025D1FB114FF00E45F0F /* InjectionClient.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -853,6 +856,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = E23HUP39A3;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = InjectionIII/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
@@ -860,6 +864,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -872,6 +877,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = E23HUP39A3;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = InjectionIII/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
@@ -879,6 +885,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -889,17 +896,19 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = E23HUP39A3;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = InjectionBundle/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.johnholdsworth.InjectionBundle;
-				PRODUCT_NAME = macOSInjection10;
+				PRODUCT_NAME = macOSInjection;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				REEXPORTED_FRAMEWORK_NAMES = "";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "InjectionBundle/XprobeSwift-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
@@ -911,16 +920,18 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = E23HUP39A3;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = InjectionBundle/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.johnholdsworth.InjectionBundle;
-				PRODUCT_NAME = macOSInjection10;
+				PRODUCT_NAME = macOSInjection;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				REEXPORTED_FRAMEWORK_NAMES = "";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "InjectionBundle/XprobeSwift-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;

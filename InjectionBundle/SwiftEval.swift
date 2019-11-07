@@ -5,7 +5,7 @@
 //  Created by John Holdsworth on 02/11/2017.
 //  Copyright © 2017 John Holdsworth. All rights reserved.
 //
-//  $Id: //depot/ResidentEval/InjectionBundle/SwiftEval.swift#111 $
+//  $Id: //depot/ResidentEval/InjectionBundle/SwiftEval.swift#124 $
 //
 //  Basic implementation of a Swift "eval()" including the
 //  mechanics of recompiling a class and loading the new
@@ -113,7 +113,7 @@ extension NSObject {
             unsafeBitCast(self, to: SwiftEvalImpl.self).evalImpl?(_ptr: ptr)
         }
         let out = ptr.pointee
-        ptr.deallocate(capacity: 1)
+        ptr.deallocate()
         return out
     }
 }
@@ -174,8 +174,10 @@ public class SwiftEval: NSObject {
 
         let sourceURL = URL(fileURLWithPath: classNameOrFile.hasPrefix("/") ? classNameOrFile : #file)
         guard let derivedData = findDerivedData(url: URL(fileURLWithPath: NSHomeDirectory())) ??
-            findDerivedData(url: sourceURL) else {
-                throw evalError("Could not locate derived data. Is the project under you home directory?")
+            (self.projectFile != nil ?
+                findDerivedData(url: URL(fileURLWithPath: self.projectFile!)) :
+                findDerivedData(url: sourceURL)) else {
+                throw evalError("Could not locate derived data. Is the project under your home directory?")
         }
         guard let (projectFile, logsDir) =
             self.derivedLogs
@@ -186,7 +188,7 @@ public class SwiftEval: NSObject {
                 findProject(for: sourceURL, derivedData: derivedData) else {
                     throw evalError("""
                         Could not locate containing project or it's logs.
-                        On macOS you need to turn off the App Sandbox.
+                        For a macOS app you need to turn off the App Sandbox.
                         Have you customised the DerivedData path?
                         """)
         }
@@ -222,7 +224,7 @@ public class SwiftEval: NSObject {
                         if ($line =~ /^\\s*cd /) {
                             $realPath = $line;
                         }
-                        elsif (my ($product) = $line =~ m@\\.xcent --timestamp=none (.*\\.app)\\r@o) {
+                        elsif (my ($product) = $line =~ m@/usr/bin/ibtool.*? --link (\\S+\\.app)@o) {
                             print $product;
                             exit 0;
                         }
@@ -363,6 +365,12 @@ public class SwiftEval: NSObject {
             #endif
         }
 
+        // Reset dylib to prevent macOS 10.15 from blocking it
+        let url = URL(fileURLWithPath: "\(tmpfile).dylib")
+        let dylib = try Data(contentsOf: url)
+        try filemgr.removeItem(at: url)
+        try dylib.write(to: url)
+
         return tmpfile
     }
 
@@ -371,7 +379,11 @@ public class SwiftEval: NSObject {
         print("💉 Loading .dylib ...")
         // load patched .dylib into process with new version of class
         guard let dl = dlopen("\(tmpfile).dylib", RTLD_NOW) else {
-            throw evalError("dlopen() error: \(String(cString: dlerror()))")
+            let error = String(cString: dlerror())
+            if error.contains("___llvm_profile_runtime") {
+                print("💉 Loading .dylib has failed, try turning off collection of test coverage in your scheme")
+            }
+            throw evalError("dlopen() error: \(error)")
         }
         print("💉 Loaded .dylib - Ignore any duplicate class warning ^")
 
@@ -393,20 +405,27 @@ public class SwiftEval: NSObject {
         else {
             // grep out symbols for classes being injected from object file
 
-            try injectGenerics(tmpfile: tmpfile, handle: dl)
+            let classSymbolNames = try extractClasSymbols(tmpfile: tmpfile)
 
-            guard shell(command: """
-                \(xcodeDev)/Toolchains/XcodeDefault.xctoolchain/usr/bin/nm \(tmpfile).o | grep -E ' S _OBJC_CLASS_\\$_| _(_T0|\\$S).*CN$' | awk '{print $3}' >\(tmpfile).classes
-                """) else {
-                throw evalError("Could not list class symbols")
-            }
-            guard var symbols = (try? String(contentsOfFile: "\(tmpfile).classes"))?.components(separatedBy: "\n") else {
-                throw evalError("Could not load class symbol list")
-            }
-            symbols.removeLast()
-
-            return Set(symbols.flatMap { dlsym(dl, String($0.dropFirst())) }).map { unsafeBitCast($0, to: AnyClass.self) }
+            return Set(classSymbolNames.compactMap {
+                dlsym(dl, String($0.dropFirst())) })
+                .map { unsafeBitCast($0, to: AnyClass.self) }
         }
+    }
+
+    func extractClasSymbols(tmpfile: String) throws -> [String] {
+
+        guard shell(command: """
+            \(xcodeDev)/Toolchains/XcodeDefault.xctoolchain/usr/bin/nm \(tmpfile).o | grep -E ' S _OBJC_CLASS_\\$_| _(_T0|\\$S|\\$s).*CN$' | awk '{print $3}' >\(tmpfile).classes
+            """) else {
+            throw evalError("Could not list class symbols")
+        }
+        guard var symbols = (try? String(contentsOfFile: "\(tmpfile).classes"))?.components(separatedBy: "\n") else {
+            throw evalError("Could not load class symbol list")
+        }
+        symbols.removeLast()
+
+        return symbols
     }
 
     func findCompileCommand(logsDir: URL, classNameOrFile: String, tmpfile: String) throws -> (compileCommand: String, sourceFile: String)? {
@@ -521,76 +540,6 @@ public class SwiftEval: NSObject {
         return (compileCommand, sourceFile.replacingOccurrences(of: "\\$", with: "$"))
     }
 
-    lazy var mainHandle = dlopen(nil, RTLD_NOLOAD)
-
-    func injectGenerics(tmpfile: String, handle: UnsafeMutableRawPointer) throws {
-
-        guard shell(command: """
-            \(xcodeDev)/Toolchains/XcodeDefault.xctoolchain/usr/bin/nm \(tmpfile).o | grep -E ' __T0.*CMn$' | awk '{print $3}' >\(tmpfile).generics
-            """) else {
-                throw evalError("Could not list generics symbols")
-        }
-        guard var generics = (try? String(contentsOfFile: "\(tmpfile).generics"))?.components(separatedBy: "\n") else {
-            throw evalError("Could not load generics symbol list")
-        }
-        generics.removeLast()
-
-        struct NominalTypeDescriptor {
-            let Name: UInt32 = 0, NumFields: UInt32 = 0
-            let FieldOffsetVectorOffset: UInt32 = 0, FieldNames: UInt32 = 0
-            let GetFieldTypes: UInt32 = 0, SadnessAndKind: UInt32 = 0
-        }
-
-        struct TargetGenericMetadata {
-            let CreateFunction: uintptr_t = 0, MetadataSize: UInt32 = 0
-            let NumKeyArguments: UInt16 = 0, AddressPoint: UInt16 = 0
-
-            let PrivateData1: uintptr_t = 0, PrivateData2: uintptr_t = 0
-            let PrivateData3: uintptr_t = 0, PrivateData4: uintptr_t = 0
-            let PrivateData5: uintptr_t = 0, PrivateData6: uintptr_t = 0
-            let PrivateData7: uintptr_t = 0, PrivateData8: uintptr_t = 0
-            let PrivateData9: uintptr_t = 0, PrivateData10: uintptr_t = 0
-            let PrivateData11: uintptr_t = 0, PrivateData12: uintptr_t = 0
-            let PrivateData13: uintptr_t = 0, PrivateData14: uintptr_t = 0
-            let PrivateData15: uintptr_t = 0, PrivateData16: uintptr_t = 0
-
-            let Destructor: uintptr_t = 0, Witness: uintptr_t = 0
-            let MetaClass: uintptr_t = 0, SuperClass: uintptr_t = 0
-            let CacheData1: uintptr_t = 0, CacheData2: uintptr_t = 0
-            let Data: uintptr_t = 0
-
-            let Flags: UInt32 = 0, InstanceAddressPoint: UInt32 = 0
-            let InstanceSize: UInt32 = 0
-            let InstanceAlignMask: UInt16 = 0, Reserved: UInt16 = 0
-            let ClassSize: UInt32 = 0, ClassAddressPoint: UInt32 = 0
-
-            var DescriptionOffset: uintptr_t = 0
-        }
-
-        func getPattern(handle: UnsafeMutableRawPointer!, sym: String) -> UnsafeMutablePointer<TargetGenericMetadata>? {
-            if let desc = dlsym(handle, String(sym.dropFirst()))?
-                .assumingMemoryBound(to: NominalTypeDescriptor.self),
-                desc.pointee.SadnessAndKind != 0 {
-                return desc.withMemoryRebound(to: UInt8.self, capacity: 1) {
-                    ($0 + Int(desc.pointee.SadnessAndKind) + 5 * MemoryLayout<UInt32>.size)
-                        .withMemoryRebound(to: TargetGenericMetadata.self, capacity: 1) {
-                            $0
-                    }
-                }
-            }
-            return nil
-        }
-
-        for generic in generics {
-            if let newpattern = getPattern(handle: handle, sym: generic),
-                let oldpattern = getPattern(handle: mainHandle, sym: generic) {
-                let save = oldpattern.pointee.DescriptionOffset
-                memcpy(oldpattern, newpattern, Int(oldpattern.pointee.MetadataSize))
-                oldpattern.pointee.DescriptionOffset = save
-            }
-        }
-    }
-
     func findDerivedData(url: URL) -> URL? {
         if url.path == "/" {
             return nil
@@ -652,42 +601,87 @@ public class SwiftEval: NSObject {
     }
 
     func shell(command: String) -> Bool {
-        try? command.write(toFile: "\(tmpDir)/command.sh", atomically: false, encoding: .utf8)
+        let commandFile = "\(tmpDir)/command.sh"
+        try! command.write(toFile: commandFile, atomically: false, encoding: .utf8)
         debug(command)
 
-        #if !(os(iOS) || os(tvOS))
+        #if os(iOS) || os(tvOS)
+        return runner.run(script: commandFile)
+        #else
         let task = Process()
         task.launchPath = "/bin/bash"
         task.arguments = ["-c", command]
         task.launch()
         task.waitUntilExit()
         return task.terminationStatus == EXIT_SUCCESS
-        #else
-        let pid = fork()
-        if pid == 0 {
-            var args = [UnsafeMutablePointer<Int8>?](repeating: nil, count: 4)
-            args[0] = strdup("/bin/bash")!
-            args[1] = strdup("-c")!
-            args[2] = strdup(command)!
-            args.withUnsafeMutableBufferPointer {
-                _ = execve($0.baseAddress![0], $0.baseAddress!, nil) // _NSGetEnviron().pointee)
-                fatalError("execve() fails \(String(cString: strerror(errno)))")
-            }
-        }
-
-        var status: Int32 = 0
-        while waitpid(pid, &status, 0) == -1 {}
-        return status >> 8 == EXIT_SUCCESS
         #endif
     }
+
+    #if os(iOS) || os(tvOS)
+    let runner = ScriptRunner()
+    #endif
 }
 
 #if os(iOS) || os(tvOS)
+class ScriptRunner {
+    let commandsOut: UnsafeMutablePointer<FILE>
+    let statusesIn: UnsafeMutablePointer<FILE>
+
+    init() {
+        let ForReading = 0, ForWriting = 1
+        var commandsPipe = [Int32](repeating: 0, count: 2)
+        var statusesPipe = [Int32](repeating: 0, count: 2)
+        pipe(&commandsPipe)
+        pipe(&statusesPipe)
+
+        if fork() == 0 {
+            let commandsIn = fdopen(commandsPipe[ForReading], "r")
+            let statusesOut = fdopen(statusesPipe[ForWriting], "w")
+            var buffer = [Int8](repeating: 0, count: 4096)
+
+            close(commandsPipe[ForWriting])
+            close(statusesPipe[ForReading])
+            setbuf(statusesOut, nil)
+
+            while let script = fgets(&buffer, Int32(buffer.count), commandsIn) {
+                script[strlen(script)-1] = 0
+
+                let pid = fork()
+                if pid == 0 {
+                    var argv = [UnsafeMutablePointer<Int8>?](repeating: nil, count: 3)
+                    argv[0] = strdup("/bin/bash")!
+                    argv[1] = strdup(script)!
+                    _ = execve(argv[0], &argv, nil)
+                    fatalError("execve() fails \(String(cString: strerror(errno)))")
+                }
+
+                var status: Int32 = 0
+                while waitpid(pid, &status, 0) == -1 {}
+                fputs("\(status >> 8)\n", statusesOut)
+            }
+
+            exit(0)
+        }
+
+        commandsOut = fdopen(commandsPipe[ForWriting], "w")
+        statusesIn = fdopen(statusesPipe[ForReading], "r")
+
+        close(commandsPipe[ForReading])
+        close(statusesPipe[ForWriting])
+        setbuf(commandsOut, nil)
+    }
+
+    func run(script: String) -> Bool {
+        fputs("\(script)\n", commandsOut)
+        var buffer = [Int8](repeating: 0, count: 10)
+        fgets(&buffer, Int32(buffer.count), statusesIn)
+        return buffer[0] == "0".utf8.first!
+    }
+}
+
 @_silgen_name("fork")
 func fork() -> Int32
 @_silgen_name("execve")
 func execve(_ __file: UnsafePointer<Int8>!, _ __argv: UnsafePointer<UnsafeMutablePointer<Int8>?>!, _ __envp: UnsafePointer<UnsafeMutablePointer<Int8>?>!) -> Int32
-@_silgen_name("_NSGetEnviron")
-func _NSGetEnviron() -> UnsafePointer<UnsafePointer<UnsafeMutablePointer<Int8>?>?>!
 #endif
 #endif

@@ -14,6 +14,7 @@
 @interface InjectionServer : SimpleSocket
 
 - (void)setProject:(NSString *)project;
+- (void)watchDirectory:(NSString *)directory;
 - (void)injectPending;
 
 @end
@@ -26,7 +27,8 @@ typedef NS_ENUM(int, InjectionCommand) {
     InjectionError,
 
     // commands to Bundle
-    InjectionProject,
+    InjectionConnected,
+    InjectionWatching,
     InjectionLog,
     InjectionSigned,
     InjectionLoad,
@@ -34,6 +36,9 @@ typedef NS_ENUM(int, InjectionCommand) {
     InjectionXprobe,
     InjectionEval,
     InjectionVaccineSettingChanged,
+    
+    InjectionTrace,
+    InjectionUntrace,
 
     InjectionEOF = ~0
 };
